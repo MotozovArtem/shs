@@ -7,4 +7,4 @@ project ("shs-server")
 
 # Include sub-projects.
 add_subdirectory ("server")
-add_subdirectory ("shs-api")
+#add_subdirectory ("shs-api")
