@@ -2,6 +2,7 @@
 //
 
 #include "shs-server.h"
+#include <iostream>
 
 int main()
 {

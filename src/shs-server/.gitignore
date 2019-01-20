@@ -1,1 +1,7 @@
 .vs
+
+#CMake cache
+*Cache.*
+CMakeFiles
+Makefile
+cmake_install.*
