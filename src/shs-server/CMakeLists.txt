@@ -3,7 +3,7 @@
 #
 cmake_minimum_required (VERSION 3.6)
 
-project ("shs-server")
+project (shs)
 
 # Include sub-projects.
 add_subdirectory ("server")
