@@ -1,4 +1,9 @@
+# Visual Studio/ VS Code
 .vs
+
+# IntelliJ IDEA
+.idea
+*.iml
 
 #Build
 build/*
@@ -8,3 +13,7 @@ build/*
 CMakeFiles
 Makefile
 cmake_install.*
+
+#target
+target
+target/*
