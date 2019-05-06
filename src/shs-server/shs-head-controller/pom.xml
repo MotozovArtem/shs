@@ -164,8 +164,8 @@
 								</goals>
 								<configuration>
 									<target>
-										<delete dir="../db"/>
-										<mkdir dir="../db"/>
+										<delete dir="db"/>
+										<mkdir dir="db"/>
 									</target>
 								</configuration>
 							</execution>
@@ -192,7 +192,7 @@
 								<configuration>
 									<driver>org.sqlite.JDBC</driver>
 									<driverProperties></driverProperties>
-									<url>jdbc:sqlite:../db/storage.db</url>
+									<url>jdbc:sqlite:db/storage.db</url>
 									<username></username>
 									<password></password>
 									<escapeProcessing>false</escapeProcessing>
