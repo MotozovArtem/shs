@@ -17,6 +17,8 @@ public class DatabaseProperties {
 
 	private String driverClassName;
 
+	private String domainPackage;
+
 	private Hibernate hibernate;
 
 	public String getUrl() {
@@ -49,6 +51,14 @@ public class DatabaseProperties {
 
 	public void setDriverClassName(String driverClassName) {
 		this.driverClassName = driverClassName;
+	}
+
+	public String getDomainPackage() {
+		return domainPackage;
+	}
+
+	public void setDomainPackage(String domainPackage) {
+		this.domainPackage = domainPackage;
 	}
 
 	public Hibernate getHibernate() {

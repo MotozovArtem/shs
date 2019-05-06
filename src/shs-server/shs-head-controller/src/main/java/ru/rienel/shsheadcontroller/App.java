@@ -40,7 +40,7 @@ public class App {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		final LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactory.setDataSource(dataSource());
-		entityManagerFactory.setPackagesToScan("ru.rienel.shsheadcontroller.domain");
+		entityManagerFactory.setPackagesToScan(databaseProperties.getDomainPackage());
 		entityManagerFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		entityManagerFactory.setJpaProperties(additionalProperties());
 		return entityManagerFactory;
