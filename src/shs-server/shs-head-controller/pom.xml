@@ -93,6 +93,7 @@
 							<tasks>
 								<delete dir="${project.build.directory}/db"/>
 								<mkdir dir="${project.build.directory}/db"/>
+								<mkdir dir="../db" />
 							</tasks>
 						</configuration>
 					</execution>
@@ -111,7 +112,7 @@
 				</dependencies>
 				<executions>
 					<execution>
-						<id>db-create-sqlite</id>
+						<id>db-create-sqlite-bundle</id>
 						<phase>generate-resources</phase>
 						<goals>
 							<goal>execute</goal>
@@ -120,6 +121,25 @@
 							<driver>org.sqlite.JDBC</driver>
 							<driverProperties></driverProperties>
 							<url>jdbc:sqlite:${project.build.directory}/db/storage.db</url>
+							<username></username>
+							<password></password>
+							<escapeProcessing>false</escapeProcessing>
+							<autocommit>true</autocommit>
+							<srcFiles>
+								<srcFile>src/main/sql/db/scheme.sql</srcFile>
+							</srcFiles>
+						</configuration>
+					</execution>
+					<execution>
+						<id>db-create-sqlite-dev</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<driver>org.sqlite.JDBC</driver>
+							<driverProperties></driverProperties>
+							<url>jdbc:sqlite:./../db/storage.db</url>
 							<username></username>
 							<password></password>
 							<escapeProcessing>false</escapeProcessing>
