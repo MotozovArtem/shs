@@ -5,6 +5,11 @@
 .idea
 *.iml
 
+# Maven
+.mvn
+mvnw
+mvnw.cmd
+
 #Build
 build/*
 
