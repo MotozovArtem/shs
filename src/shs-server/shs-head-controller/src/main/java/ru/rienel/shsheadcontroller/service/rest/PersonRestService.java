@@ -7,16 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import ru.rienel.shsheadcontroller.domain.Person;
 import ru.rienel.shsheadcontroller.repository.PersonRepository;
 
 @RestController
 @RequestMapping("api/v1/person")
-public class PersonService {
+public class PersonRestService {
 	private PersonRepository personRepository;
 
 	@Autowired
-	public PersonService(PersonRepository personRepository) {
+	public PersonRestService(PersonRepository personRepository) {
 		this.personRepository = personRepository;
 	}
 
