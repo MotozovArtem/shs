@@ -16,39 +16,39 @@ CREATE TABLE IF NOT EXISTS 'Person'
 
 CREATE TABLE IF NOT EXISTS 'ResourceBill'
 (
-	'id'             INTEGER PRIMARY KEY,
-	'serialNumber'   VARCHAR(100) NOT NULL,
-	'costPerUnit'    DECIMAL(5, 2),
-	'summary'        DECIMAL(8, 2),
-	'person'         INTEGER,
-	'lastIndication' INTEGER,
+	'id'              INTEGER PRIMARY KEY,
+	'serial_mumber'   VARCHAR(100) NOT NULL,
+	'cost_per_unit'   DECIMAL(5, 2),
+	'summary'         DECIMAL(8, 2),
+	'person'          INTEGER,
+	'last_indication' INTEGER,
 	FOREIGN KEY ('person') REFERENCES Person ('id'),
-	FOREIGN KEY ('lastIndication') REFERENCES IndicationRecord ('id')
+	FOREIGN KEY ('last_indication') REFERENCES IndicationRecord ('id')
 );
 
 CREATE TABLE IF NOT EXISTS 'IndicationRecord'
 (
-	'id'         INTEGER PRIMARY KEY,
-	'recordUuid' VARCHAR(60) UNIQUE NOT NULL,
-	'value'      DECIMAL(10, 3),
-	'recordDate' INTEGER,
-	'delta'      DECIMAL(10, 3)
+	'id'          INTEGER PRIMARY KEY,
+	'record_uuid' VARCHAR(60) UNIQUE NOT NULL,
+	'value'       DECIMAL(10, 3),
+	'record_date' INTEGER,
+	'delta'       DECIMAL(10, 3)
 );
 
 CREATE TABLE IF NOT EXISTS 'ResourceMeter'
 (
-	'id'           INTEGER PRIMARY KEY,
-	'serialNumber' VARCHAR(32),
-	'type'         VARCHAR(100),
-	'verification' TEXT,
-	'addedTime'    INTEGER
+	'id'            INTEGER PRIMARY KEY,
+	'serial_number' VARCHAR(32),
+	'type'          VARCHAR(100),
+	'verification'  TEXT,
+	'addedTime'     INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS 'ResourceMeterNeighbors'
 (
-	'id'                      INTEGER PRIMARY KEY,
-	'resourceMeterId'         INTEGER,
-	'neighborResourceMeterId' INTEGER,
-	FOREIGN KEY ('resourceMeterId') REFERENCES ResourceMeter ('id'),
-	FOREIGN KEY ('neighborResourceMeterId') REFERENCES ResourceMeter ('id')
+	'id'                         INTEGER PRIMARY KEY,
+	'resource_meter_id'          INTEGER,
+	'neighbor_resource_meter_id' INTEGER,
+	FOREIGN KEY ('resource_meter_id') REFERENCES ResourceMeter ('id'),
+	FOREIGN KEY ('neighbor_resource_meter_id') REFERENCES ResourceMeter ('id')
 );

@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -20,22 +21,22 @@ public class ResourceBill {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@Column(name = "serialNumber", length = 100)
+	@Column(name = "serial_number", length = 100)
 	private String serialNumber;
 
-	@Column(name = "costPerUnit", precision = 5, scale = 2)
+	@Column(name = "cost_per_unit", precision = 5, scale = 2)
 	private Double costPerUnit;
 
 	@Column(name = "summary", precision = 8, scale = 2)
 	private Double summary;
 
-	@Column(name = "person")
+	@JoinColumn(name = "person")
 	@ManyToOne(targetEntity = Person.class, fetch = FetchType.LAZY, optional = false)
-	private Long person;
+	private Person person;
 
-	@Column(name = "lastIndication")
+	@JoinColumn(name = "last_indication")
 	@ManyToOne(targetEntity = IndicationRecord.class, fetch = FetchType.LAZY, optional = false)
-	private Long lastIndication;
+	private IndicationRecord lastIndication;
 
 	public Long getId() {
 		return id;
@@ -69,19 +70,19 @@ public class ResourceBill {
 		this.summary = summary;
 	}
 
-	public Long getPerson() {
+	public Person getPerson() {
 		return person;
 	}
 
-	public void setPerson(Long person) {
+	public void setPerson(Person person) {
 		this.person = person;
 	}
 
-	public Long getLastIndication() {
+	public IndicationRecord getLastIndication() {
 		return lastIndication;
 	}
 
-	public void setLastIndication(Long lastIndication) {
+	public void setLastIndication(IndicationRecord lastIndication) {
 		this.lastIndication = lastIndication;
 	}
 }

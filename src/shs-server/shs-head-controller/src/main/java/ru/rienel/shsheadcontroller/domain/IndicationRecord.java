@@ -24,14 +24,14 @@ public class IndicationRecord {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@Column(name = "recordUuid", unique = true, nullable = false)
+	@Column(name = "record_uuid", unique = true, nullable = false)
 	@Convert(converter = UuidConverter.class)
 	private UUID recordUuid;
 
 	@Column(name = "value", precision = 10, scale = 3)
 	private Double value;
 
-	@Column(name = "recordDate", nullable = false)
+	@Column(name = "record_date", nullable = false)
 	@Convert(converter = ZonedDateTimeConverter.class)
 	private ZonedDateTime recordDate;
 

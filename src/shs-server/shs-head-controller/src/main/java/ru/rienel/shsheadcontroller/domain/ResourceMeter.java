@@ -2,6 +2,7 @@ package ru.rienel.shsheadcontroller.domain;
 
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Set;
 import java.util.Stack;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.ToString;
@@ -30,7 +32,7 @@ public class ResourceMeter {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@Column(name = "serialNumber")
+	@Column(name = "serial_number")
 	private String serialNumber;
 
 	@Column(name = "type")
@@ -40,15 +42,15 @@ public class ResourceMeter {
 	@Column(name = "verification")
 	private Stack<ZonedDateTime> verification;
 
-	@Column(name = "addedTime")
+	@Column(name = "added_time")
 	@Convert(converter = ZonedDateTimeConverter.class)
 	private ZonedDateTime addedTime;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	@OneToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "ResourceMeterNeighbors",
-			joinColumns = @JoinColumn(name = "neighborResourceMeterId"),
-			inverseJoinColumns = @JoinColumn(name = "resourceMeterId"))
-	private List<ResourceMeter> neighbors;
+			joinColumns = @JoinColumn(name = "neighbor_resource_meter_id"),
+			inverseJoinColumns = @JoinColumn(name = "resource_meter_id"))
+	private Set<ResourceMeter> neighbors;
 
 	public Long getId() {
 		return id;
@@ -90,11 +92,11 @@ public class ResourceMeter {
 		this.addedTime = addedTime;
 	}
 
-	public List<ResourceMeter> getNeighbors() {
+	public Set<ResourceMeter> getNeighbors() {
 		return neighbors;
 	}
 
-	public void setNeighbors(List<ResourceMeter> neighbors) {
+	public void setNeighbors(Set<ResourceMeter> neighbors) {
 		this.neighbors = neighbors;
 	}
 }
