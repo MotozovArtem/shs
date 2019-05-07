@@ -50,7 +50,7 @@ public class ResourceMeter {
 	@JoinTable(name = "ResourceMeterNeighbors",
 			joinColumns = @JoinColumn(name = "neighbor_resource_meter_id"),
 			inverseJoinColumns = @JoinColumn(name = "resource_meter_id"))
-	private Set<ResourceMeter> neighbors;
+	private List<ResourceMeter> neighbors;
 
 	public Long getId() {
 		return id;
@@ -92,11 +92,11 @@ public class ResourceMeter {
 		this.addedTime = addedTime;
 	}
 
-	public Set<ResourceMeter> getNeighbors() {
+	public List<ResourceMeter> getNeighbors() {
 		return neighbors;
 	}
 
-	public void setNeighbors(Set<ResourceMeter> neighbors) {
+	public void setNeighbors(List<ResourceMeter> neighbors) {
 		this.neighbors = neighbors;
 	}
 }
