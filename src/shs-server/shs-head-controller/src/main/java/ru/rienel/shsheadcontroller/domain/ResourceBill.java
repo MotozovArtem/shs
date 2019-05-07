@@ -17,7 +17,7 @@ import lombok.ToString;
 @ToString(of = {"id", "serialNumber", "summary", "person"})
 public class ResourceBill {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 

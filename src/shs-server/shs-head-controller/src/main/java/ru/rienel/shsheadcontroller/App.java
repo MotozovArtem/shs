@@ -3,6 +3,7 @@ package ru.rienel.shsheadcontroller;
 import java.util.Properties;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,10 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import ru.rienel.shsheadcontroller.config.DatabaseProperties;
+import ru.rienel.shsheadcontroller.domain.CustomUser;
+import ru.rienel.shsheadcontroller.domain.Person;
+import ru.rienel.shsheadcontroller.repository.CustomUserRepository;
+import ru.rienel.shsheadcontroller.repository.PersonRepository;
 
 @SpringBootApplication
 @EnableConfigurationProperties(DatabaseProperties.class)
@@ -36,6 +41,12 @@ public class App {
 		return dataSource;
 	}
 
+	private Properties getConnectionProperties() {
+		Properties properties = new Properties();
+		properties.put("cache", "shared");
+		return properties;
+	}
+
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		final LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
@@ -44,12 +55,6 @@ public class App {
 		entityManagerFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		entityManagerFactory.setJpaProperties(additionalProperties());
 		return entityManagerFactory;
-	}
-
-	private Properties getConnectionProperties() {
-		Properties properties = new Properties();
-		properties.put("cache", "shared");
-		return properties;
 	}
 
 	private Properties additionalProperties() {
@@ -61,5 +66,30 @@ public class App {
 			hibernateProperties.setProperty("hibernate.show_sql", databaseProperties.getHibernate().getShowSql().toString());
 		}
 		return hibernateProperties;
+	}
+
+	@Bean
+	public InitializingBean testPerson(PersonRepository personRepository) {
+		return () -> {
+			Person person = new Person();
+			person.setName("Artyom");
+			person.setSurname("Motozov");
+			person.setPatronymic("Vladimirovich");
+			person.setAddress("Test address");
+			personRepository.save(person);
+		};
+	}
+
+	@Bean
+	public InitializingBean testUser(CustomUserRepository customUserRepository, PersonRepository personRepository) {
+		return () -> {
+			Person person = personRepository.findByNameAndSurnameAndPatronymic("Artyom",
+					"Motozov", "Vladimirovich");
+			CustomUser user = new CustomUser();
+			user.setUsername("admin");
+			user.setPassword("admin");
+			user.setPerson(person);
+			customUserRepository.save(user);
+		};
 	}
 }

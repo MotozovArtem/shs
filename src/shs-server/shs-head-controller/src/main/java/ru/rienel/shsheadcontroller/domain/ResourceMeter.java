@@ -28,7 +28,7 @@ import ru.rienel.shsheadcontroller.domain.converter.ZonedDateTimeConverter;
 @ToString(of = {"id", "serialNumber", "type", "addedTime"})
 public class ResourceMeter {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 

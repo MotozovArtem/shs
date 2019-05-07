@@ -157,15 +157,15 @@
 						<version>1.8</version>
 						<executions>
 							<execution>
-								<id>make-generated-resource-dir</id>
+								<id>make-generated-resource-dir-dev</id>
 								<phase>generate-resources</phase>
 								<goals>
 									<goal>run</goal>
 								</goals>
 								<configuration>
 									<target>
-										<delete dir="db"/>
-										<mkdir dir="db"/>
+										<delete dir="${project.basedir}/../db"/>
+										<mkdir dir="${project.basedir}/../db"/>
 									</target>
 								</configuration>
 							</execution>

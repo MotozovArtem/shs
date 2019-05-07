@@ -1,7 +1,10 @@
 -- Util tables
 CREATE TABLE IF NOT EXISTS 'User'
 (
-	'id' INTEGER PRIMARY KEY
+	'id'       INTEGER PRIMARY KEY,
+	'username' VARCHAR(100) UNIQUE NOT NULL,
+	'password' VARCHAR(100)        NOT NULL,
+	'person'   INTEGER             NOT NULL
 );
 
 -- Domain tables
