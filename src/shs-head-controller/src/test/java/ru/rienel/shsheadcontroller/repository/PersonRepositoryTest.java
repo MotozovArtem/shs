@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,10 +23,10 @@ public class PersonRepositoryTest {
 	@Test
 	public void testAddPerson(){
 		Person person = new Person();
-		person.setName("Artyom");
-		person.setSurname("Motozov");
-		person.setPatronymic("Vladimirovich");
-		person.setAddress("Address");
+		person.setName("Test");
+		person.setSurname("Test");
+		person.setPatronymic("Test");
+		person.setAddress("Test");
 
 		Person actualPerson = personRepository.save(person);
 		Assert.assertEquals(1, personRepository.count());
@@ -33,7 +34,10 @@ public class PersonRepositoryTest {
 		Assert.assertEquals(person.getSurname(), actualPerson.getSurname());
 		Assert.assertEquals(person.getPatronymic(), actualPerson.getPatronymic());
 		Assert.assertEquals(person.getAddress(), actualPerson.getPatronymic());
+	}
 
+	@After
+	public void cleanPersonRepository(){
 		personRepository.deleteAll();
 	}
 }

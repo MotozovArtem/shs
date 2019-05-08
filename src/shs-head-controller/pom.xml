@@ -55,6 +55,17 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!-- slf4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -164,8 +175,8 @@
 								</goals>
 								<configuration>
 									<target>
-										<delete dir="${project.basedir}/../db"/>
-										<mkdir dir="${project.basedir}/../db"/>
+										<delete dir="${project.basedir}/db"/>
+										<mkdir dir="${project.basedir}/db"/>
 									</target>
 								</configuration>
 							</execution>
