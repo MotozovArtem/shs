@@ -7,4 +7,6 @@ import ru.rienel.shsheadcontroller.domain.CustomUser;
 public interface CustomUserRepository extends CrudRepository<CustomUser, Long> {
 
 	CustomUser findByUsername(String username);
+
+	boolean existsByUsername(String username);
 }

@@ -72,11 +72,16 @@ public class App {
 	public InitializingBean testPerson(PersonRepository personRepository) {
 		return () -> {
 			Person person = new Person();
-			person.setName("Artyom");
-			person.setSurname("Motozov");
-			person.setPatronymic("Vladimirovich");
+			String name = "Artyom";
+			String surname = "Motozov";
+			String patronymic = "Vladimirovich";
+			person.setName(name);
+			person.setSurname(surname);
+			person.setPatronymic(patronymic);
 			person.setAddress("Test address");
-			personRepository.save(person);
+			if (!personRepository.existsByNameAndSurnameAndPatronymic(name, surname, patronymic)) {
+				personRepository.save(person);
+			}
 		};
 	}
 
@@ -89,7 +94,9 @@ public class App {
 			user.setUsername("admin");
 			user.setPassword("admin");
 			user.setPerson(person);
-			customUserRepository.save(user);
+			if (!customUserRepository.existsByUsername("admin")) {
+				customUserRepository.save(user);
+			}
 		};
 	}
 }

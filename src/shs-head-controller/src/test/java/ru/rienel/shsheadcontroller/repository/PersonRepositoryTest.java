@@ -21,7 +21,7 @@ public class PersonRepositoryTest {
 	private PersonRepository personRepository;
 
 	@Test
-	public void testAddPerson(){
+	public void testAddPerson() {
 		Person person = new Person();
 		person.setName("Test");
 		person.setSurname("Test");
@@ -29,7 +29,6 @@ public class PersonRepositoryTest {
 		person.setAddress("Test");
 
 		Person actualPerson = personRepository.save(person);
-		Assert.assertEquals(1, personRepository.count());
 		Assert.assertEquals(person.getName(), actualPerson.getName());
 		Assert.assertEquals(person.getSurname(), actualPerson.getSurname());
 		Assert.assertEquals(person.getPatronymic(), actualPerson.getPatronymic());
@@ -37,7 +36,7 @@ public class PersonRepositoryTest {
 	}
 
 	@After
-	public void cleanPersonRepository(){
+	public void cleanPersonRepository() {
 		personRepository.deleteAll();
 	}
 }

@@ -12,4 +12,6 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
 	List<Person> findBySurname(String surname);
 
 	Person findByNameAndSurnameAndPatronymic(String name, String surname, String patronymic);
+
+	boolean existsByNameAndSurnameAndPatronymic(String name, String surname, String patronymic);
 }
