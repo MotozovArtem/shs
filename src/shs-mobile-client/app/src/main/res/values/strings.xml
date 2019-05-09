@@ -1,3 +1,4 @@
 <resources>
 	<string name="app_name">shs-mobile-client</string>
+	<string name="applicationTitle">SHS Mobile Client</string>
 </resources>
