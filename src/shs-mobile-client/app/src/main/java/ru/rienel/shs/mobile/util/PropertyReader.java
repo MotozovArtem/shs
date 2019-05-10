@@ -8,12 +8,15 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
 
-public class AssetsPropertyReader {
+public class PropertyReader {
+
+	private static final String TAG = PropertyReader.class.getName();
+
 	private Context context;
 
 	private Properties properties;
 
-	public AssetsPropertyReader(Context context) {
+	public PropertyReader(Context context) {
 		this.context = context;
 		properties = new Properties();
 	}
@@ -24,9 +27,8 @@ public class AssetsPropertyReader {
 			InputStream inputStream = assetManager.open(FileName);
 			properties.load(inputStream);
 		} catch (IOException e) {
-			Log.e("AssetsPropertyReader", e.toString());
+			Log.e(TAG, "PropertyReader", e);
 		}
 		return properties;
-
 	}
 }

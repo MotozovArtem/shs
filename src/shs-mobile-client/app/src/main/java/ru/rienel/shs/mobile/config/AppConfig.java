@@ -4,14 +4,14 @@ import java.util.Properties;
 
 import android.content.Context;
 
-import ru.rienel.shs.mobile.util.AssetsPropertyReader;
+import ru.rienel.shs.mobile.util.PropertyReader;
 
 public class AppConfig {
 
 	private String headControllerEndpoint;
 
 	public AppConfig(Context context) {
-		AssetsPropertyReader propertyReader = new AssetsPropertyReader(context);
+		PropertyReader propertyReader = new PropertyReader(context);
 		Properties properties = propertyReader.getProperties("app.properties");
 		headControllerEndpoint = properties.getProperty("hc.endpoint");
 	}
