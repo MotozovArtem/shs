@@ -1,0 +1,157 @@
+#
+# generated on 2019/05/10 02:54:09
+#
+# --table-start--
+dataClass=ru.rienel.shs.mobile.domain.User
+tableName=User
+# --table-fields-start--
+# --field-start--
+fieldName=id
+columnName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=username
+columnName=username
+# --field-end--
+# --field-start--
+fieldName=password
+columnName=password
+# --field-end--
+# --field-start--
+fieldName=person
+columnName=person
+foreign=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=ru.rienel.shs.mobile.domain.Person
+tableName=Person
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=name
+width=100
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=surname
+width=100
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=patronymic
+width=100
+# --field-end--
+# --field-start--
+fieldName=address
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=ru.rienel.shs.mobile.domain.ResourceBill
+tableName=ResourceBill
+# --table-fields-start--
+# --field-start--
+fieldName=id
+columnName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=serialNumber
+columnName=serial_number
+width=100
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=costPerUnit
+columnName=cost_per_unit
+# --field-end--
+# --field-start--
+fieldName=summary
+columnName=summary
+# --field-end--
+# --field-start--
+fieldName=person
+columnName=person
+foreign=true
+# --field-end--
+# --field-start--
+fieldName=lastIndication
+columnName=last_indication
+foreign=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=ru.rienel.shs.mobile.domain.ResourceMeter
+tableName=ResourceMeter
+# --table-fields-start--
+# --field-start--
+fieldName=id
+columnName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=serialNumber
+columnName=serial_number
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=type
+columnName=type
+dataPersister=ENUM_STRING
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=verification
+columnName=verification
+# --field-end--
+# --field-start--
+fieldName=addedTime
+columnName=added_time
+# --field-end--
+# --field-start--
+fieldName=neighbors
+columnName=neighbors
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=ru.rienel.shs.mobile.domain.IndicationRecord
+tableName=IndicationRecord
+# --table-fields-start--
+# --field-start--
+fieldName=id
+columnName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=recordUuid
+columnName=record_uuid
+dataPersister=UUID
+# --field-end--
+# --field-start--
+fieldName=value
+columnName=value
+# --field-end--
+# --field-start--
+fieldName=recordDate
+columnName=record_date
+dataPersister=DATE
+# --field-end--
+# --field-start--
+fieldName=delta
+columnName=delta
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

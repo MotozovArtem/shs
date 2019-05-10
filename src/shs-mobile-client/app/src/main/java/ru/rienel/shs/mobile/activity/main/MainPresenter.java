@@ -1,6 +1,8 @@
 package ru.rienel.shs.mobile.activity.main;
 
-import ru.rienel.shs.mobile.activity.BasePresenter;
+public class MainPresenter implements MainContract.Presenter {
+	@Override
+	public void start() {
 
-public class MainPresenter {
+	}
 }
