@@ -1,6 +1,6 @@
 package ru.rienel.shs.mobile.domain;
 
-import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Stack;
 
@@ -23,10 +23,10 @@ public class ResourceMeter {
 	private ResourceType type;
 
 	@DatabaseField(columnName = "verification")
-	private Stack<ZonedDateTime> verification;
+	private Stack<Date> verification;
 
-	@DatabaseField(columnName = "added_time")
-	private ZonedDateTime addedTime;
+	@DatabaseField(columnName = "added_time", dataType = DataType.DATE)
+	private Date addedTime;
 
 	@DatabaseField(columnName = "neighbors")
 	private List<ResourceMeter> neighbors;
@@ -58,19 +58,19 @@ public class ResourceMeter {
 		this.type = type;
 	}
 
-	public Stack<ZonedDateTime> getVerification() {
+	public Stack<Date> getVerification() {
 		return verification;
 	}
 
-	public void setVerification(Stack<ZonedDateTime> verification) {
+	public void setVerification(Stack<Date> verification) {
 		this.verification = verification;
 	}
 
-	public ZonedDateTime getAddedTime() {
+	public Date getAddedTime() {
 		return addedTime;
 	}
 
-	public void setAddedTime(ZonedDateTime addedTime) {
+	public void setAddedTime(Date addedTime) {
 		this.addedTime = addedTime;
 	}
 

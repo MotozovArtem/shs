@@ -34,6 +34,7 @@ dependencies {
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-jackson:2.5.0'
     // ORMLite
     implementation 'com.j256.ormlite:ormlite-android:5.1'
     // Lombok
