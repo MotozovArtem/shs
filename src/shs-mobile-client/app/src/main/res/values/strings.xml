@@ -1,4 +1,8 @@
 <resources>
 	<string name="app_name">shs-mobile-client</string>
 	<string name="applicationTitle">SHS Mobile Client</string>
+	<string name="empty"/>
+	<string name="OK">OK</string>
+	<string name="cancel">Cancel</string>
+	<string name="acceptr">Accept</string>
 </resources>
