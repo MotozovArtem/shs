@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Stack;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,6 +25,7 @@ public class ResourceMeterDto {
 	@JsonProperty("verification")
 	private Stack<Date> verification;
 
+	@JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX", locale = "en_US")
 	@JsonProperty("addedTime")
 	private Date addedTime;
 
