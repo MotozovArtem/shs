@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import ru.rienel.shs.mobile.R;
+import ru.rienel.shs.mobile.config.AppConfig;
 
 public class MainActivity extends AppCompatActivity {
 	@Override
@@ -14,6 +15,13 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.main_activity);
 
 		TextView view = findViewById(R.id.main_activity_text);
-		view.setText(R.string.app_name);
+		AppConfig config = new AppConfig(this);
+
+		String endpoint = config.getHeadControllerEndpoint();
+		if (endpoint != null) {
+			view.setText(endpoint);
+		} else {
+			view.setText(R.string.app_name);
+		}
 	}
 }
