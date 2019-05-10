@@ -11,12 +11,21 @@
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme"
 			tools:ignore="GoogleAppIndexingWarning">
+		<activity android:name=".activity.meter.MeterActivity">
+		</activity>
+		<activity android:name=".activity.person.PersonActivity">
+		</activity>
+		<activity android:name=".activity.bill.BillActivity">
+		</activity>
+		<activity android:name=".activity.user.UserActivity">
+		</activity>
 		<activity
 				android:name=".activity.main.MainActivity"
 				android:label="@string/applicationTitle"
 				android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
+
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
