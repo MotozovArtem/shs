@@ -23,7 +23,7 @@ public class ResourceMeterDto {
 	private ResourceType type;
 
 	@JsonProperty("verification")
-	private Stack<Date> verification;
+	private List<Date> verification;
 
 	@JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX", locale = "en_US")
 	@JsonProperty("addedTime")
@@ -48,11 +48,11 @@ public class ResourceMeterDto {
 		this.type = type;
 	}
 
-	public Stack<Date> getVerification() {
+	public List<Date> getVerification() {
 		return verification;
 	}
 
-	public void setVerification(Stack<Date> verification) {
+	public void setVerification(List<Date> verification) {
 		this.verification = verification;
 	}
 
