@@ -25,7 +25,9 @@ public class PersonActivity extends AppCompatActivity {
 					.add(R.id.personRootFragmentContainer, personRootFragment)
 					.commit();
 		}
-		personPresenter = new PersonPresenter(personRootFragment);
+		personPresenter = new PersonPresenter(personRootFragment, this);
+
+		personRootFragment.setPresenter(personPresenter);
 	}
 
 	@Override

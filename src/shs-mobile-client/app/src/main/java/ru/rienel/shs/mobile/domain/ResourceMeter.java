@@ -23,7 +23,7 @@ public class ResourceMeter {
 	private ResourceType type;
 
 	@DatabaseField(columnName = "verification")
-	private Stack<Date> verification;
+	private List<Date> verification;
 
 	@DatabaseField(columnName = "added_time", dataType = DataType.DATE)
 	private Date addedTime;
@@ -58,11 +58,11 @@ public class ResourceMeter {
 		this.type = type;
 	}
 
-	public Stack<Date> getVerification() {
+	public List<Date> getVerification() {
 		return verification;
 	}
 
-	public void setVerification(Stack<Date> verification) {
+	public void setVerification(List<Date> verification) {
 		this.verification = verification;
 	}
 

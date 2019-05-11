@@ -1,4 +1,4 @@
 package ru.rienel.shs.mobile.headcontroller;
 
-public class ResourceMeterApiClient {
+public interface ResourceMeterApiClient {
 }

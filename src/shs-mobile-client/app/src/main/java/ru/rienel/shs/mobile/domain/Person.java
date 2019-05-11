@@ -2,8 +2,10 @@ package ru.rienel.shs.mobile.domain;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import lombok.ToString;
 
 @DatabaseTable(tableName = "Person")
+@ToString(of = {"id", "name", "surname", "patronymic"})
 public class Person {
 
 	@DatabaseField(generatedId = true)

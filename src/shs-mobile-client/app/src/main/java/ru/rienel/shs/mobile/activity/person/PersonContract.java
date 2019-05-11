@@ -10,5 +10,6 @@ public interface PersonContract {
 
 	interface Presenter extends BasePresenter {
 
+		void loadData();
 	}
 }

@@ -3,6 +3,8 @@
 		  xmlns:tools="http://schemas.android.com/tools"
 		  package="ru.rienel.shs.mobile">
 
+	<uses-permission android:name="android.permission.INTERNET"/>
+
 	<application
 			android:allowBackup="true"
 			android:icon="@mipmap/ic_launcher"
@@ -11,15 +13,25 @@
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme"
 			tools:ignore="GoogleAppIndexingWarning">
-		<activity android:name=".activity.login.LoginActivity">
+		<activity
+				android:label="@string/test_text"
+				android:name=".activity.login.LoginActivity">
 		</activity>
-		<activity android:name=".activity.meter.MeterActivity">
+		<activity
+				android:label="@string/meters"
+				android:name=".activity.meter.MeterActivity">
 		</activity>
-		<activity android:name=".activity.person.PersonActivity">
+		<activity
+				android:label="@string/persons"
+				android:name=".activity.person.PersonActivity">
 		</activity>
-		<activity android:name=".activity.bill.BillActivity">
+		<activity
+				android:label="@string/bills"
+				android:name=".activity.bill.BillActivity">
 		</activity>
-		<activity android:name=".activity.user.UserActivity">
+		<activity
+				android:label="@string/test_text"
+				android:name=".activity.user.UserActivity">
 		</activity>
 		<activity
 				android:name=".activity.main.MainActivity"
