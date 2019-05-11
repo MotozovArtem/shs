@@ -38,6 +38,6 @@ dependencies {
     // ORMLite
     implementation 'com.j256.ormlite:ormlite-android:5.1'
     // Lombok
-    compileOnly 'org.projectlombok:lombok:1.16.22'
-    annotationProcessor 'org.projectlombok:lombok:1.16.22'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
 }

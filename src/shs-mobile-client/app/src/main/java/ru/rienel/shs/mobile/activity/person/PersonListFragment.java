@@ -17,12 +17,18 @@ import android.widget.TextView;
 import ru.rienel.shs.mobile.R;
 import ru.rienel.shs.mobile.domain.Person;
 
-public class PersonListFragment extends Fragment implements PersonContract.View {
+public class PersonListFragment extends Fragment {
 
 	private RecyclerView personRecyclerView;
 	private PersonAdapter personAdapter;
 	private PersonContract.Presenter personPresenter;
 	private List<Person> personList = new ArrayList<>();
+
+	public static PersonListFragment getInstance(PersonContract.Presenter personPresenter) {
+		PersonListFragment fragment = new PersonListFragment();
+		fragment.setPresenter(personPresenter);
+		return fragment;
+	}
 
 	@Nullable
 	@Override
@@ -40,9 +46,14 @@ public class PersonListFragment extends Fragment implements PersonContract.View 
 		personRecyclerView.setAdapter(personAdapter);
 	}
 
-	@Override
+	public void updateUi(List<Person> personList) {
+		personAdapter = new PersonAdapter(personList);
+		personRecyclerView.setAdapter(personAdapter);
+	}
+
 	public void setPresenter(PersonContract.Presenter presenter) {
 		this.personPresenter = presenter;
+		personPresenter.addListener(new PersonApiResponseListener());
 	}
 
 	private class PersonAdapter extends RecyclerView.Adapter<PersonHolder> {
@@ -55,7 +66,7 @@ public class PersonListFragment extends Fragment implements PersonContract.View 
 		@Override
 		public PersonHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 			LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-			View view = layoutInflater.inflate(android.R.layout.simple_list_item_1, viewGroup, false);
+			View view = layoutInflater.inflate(R.layout.person_list_item, viewGroup, false);
 			return new PersonHolder(view);
 		}
 
@@ -94,6 +105,16 @@ public class PersonListFragment extends Fragment implements PersonContract.View 
 			surname.setText(this.person.getSurname());
 			name.setText(this.person.getName());
 			patronymic.setText(this.person.getPatronymic());
+		}
+	}
+
+	class PersonApiResponseListener implements PersonPresenter.PersonApiResponseListener {
+
+		@Override
+		public void response(PersonPresenter.PersonApiResponseEvent event) {
+			List<Person> personList = event.getPersonList();
+
+			updateUi(personList);
 		}
 	}
 }

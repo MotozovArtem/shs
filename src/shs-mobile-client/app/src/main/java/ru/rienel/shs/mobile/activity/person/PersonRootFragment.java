@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import ru.rienel.shs.mobile.R;
 
@@ -30,8 +31,9 @@ public class PersonRootFragment extends Fragment implements PersonContract.View,
 				android.R.color.holo_blue_light,
 				android.R.color.holo_green_light,
 				android.R.color.holo_orange_light);
+
 		// Executes after render activity
-		swipeRefreshLayout.post(()->{
+		swipeRefreshLayout.post(() -> {
 			swipeRefreshLayout.setRefreshing(true);
 			personPresenter.loadData();
 		});
@@ -44,12 +46,11 @@ public class PersonRootFragment extends Fragment implements PersonContract.View,
 		FragmentManager fragmentManager = getFragmentManager();
 		personListFragment = (PersonListFragment)fragmentManager.findFragmentById(R.id.personSwipeRefreshLayout);
 		if (personListFragment == null) {
-			personListFragment = new PersonListFragment();
+			personListFragment = PersonListFragment.getInstance(personPresenter);
 			fragmentManager.beginTransaction()
 					.add(R.id.personSwipeRefreshLayout, personListFragment)
 					.commit();
 		}
-		personListFragment.setPresenter(personPresenter);
 		return view;
 	}
 
@@ -60,6 +61,26 @@ public class PersonRootFragment extends Fragment implements PersonContract.View,
 
 	@Override
 	public void onRefresh() {
+		personPresenter.loadData();
+	}
 
+	@Override
+	public void makeShortToast(int stringResource) {
+		Toast.makeText(getContext(), stringResource, Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void makeLongToast(int stringResource) {
+		Toast.makeText(getContext(), stringResource, Toast.LENGTH_LONG).show();
+	}
+
+	@Override
+	public void makeShortToastWithText(String message) {
+		Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void setRefreshing(Boolean isRefreshing) {
+		swipeRefreshLayout.setRefreshing(isRefreshing);
 	}
 }
