@@ -1,5 +1,6 @@
 package ru.rienel.shs.mobile.activity.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,9 +13,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import ru.rienel.shs.mobile.R;
+import ru.rienel.shs.mobile.activity.bill.BillActivity;
+import ru.rienel.shs.mobile.activity.indication.IndicationsActivity;
+import ru.rienel.shs.mobile.activity.meter.MeterActivity;
+import ru.rienel.shs.mobile.activity.person.PersonActivity;
+import ru.rienel.shs.mobile.activity.settings.SettingsActivity;
 
 public class MainRootFragment extends Fragment implements MainContract.View {
 	private DrawerLayout drawerLayout;
@@ -36,34 +41,34 @@ public class MainRootFragment extends Fragment implements MainContract.View {
 	}
 
 	private NavigationView.OnNavigationItemSelectedListener newNavigationItemSelectedListener() {
-		return new NavigationView.OnNavigationItemSelectedListener() {
-			@Override
-			public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-				switch (menuItem.getItemId()) {
-					case R.id.menu_dashboard:
-						Toast.makeText(getContext(), "DASHBOARD", Toast.LENGTH_LONG).show();
-						break;
-					case R.id.menu_persons:
-						Toast.makeText(getContext(), "PERSONS", Toast.LENGTH_LONG).show();
-						break;
-					case R.id.menu_bill:
-						Toast.makeText(getContext(), "BILL", Toast.LENGTH_LONG).show();
-						break;
-					case R.id.menu_indications:
-						Toast.makeText(getContext(), "Indications", Toast.LENGTH_LONG).show();
-						break;
-					case R.id.menu_meters:
-						Toast.makeText(getContext(), "Meters", Toast.LENGTH_LONG).show();
-						break;
-					case R.id.menu_settings:
-						Toast.makeText(getContext(), "Settings", Toast.LENGTH_LONG).show();
-						break;
-				}
-				return true;
+		return menuItem -> {
+			switch (menuItem.getItemId()) {
+				case R.id.menu_dashboard:
+					break;
+				case R.id.menu_persons:
+					startActivity(prepareChangeActivityIntent(PersonActivity.class));
+					break;
+				case R.id.menu_bill:
+					startActivity(prepareChangeActivityIntent(BillActivity.class));
+					break;
+				case R.id.menu_indications:
+					startActivity(prepareChangeActivityIntent(IndicationsActivity.class));
+					break;
+				case R.id.menu_meters:
+					startActivity(prepareChangeActivityIntent(MeterActivity.class));
+					break;
+				case R.id.menu_settings:
+					startActivity(prepareChangeActivityIntent(SettingsActivity.class));
+					break;
 			}
+			return true;
 		};
 	}
 
+	public Intent prepareChangeActivityIntent(Class<? extends AppCompatActivity> activityClass) {
+		Intent intent = new Intent(getContext(), activityClass);
+		return intent;
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
