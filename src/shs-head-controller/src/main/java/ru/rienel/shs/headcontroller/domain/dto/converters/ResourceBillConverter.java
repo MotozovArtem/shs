@@ -2,14 +2,28 @@ package ru.rienel.shs.headcontroller.domain.dto.converters;
 
 import java.util.Objects;
 
+import org.springframework.stereotype.Component;
+
+import ru.rienel.shs.headcontroller.domain.IndicationRecord;
+import ru.rienel.shs.headcontroller.domain.Person;
 import ru.rienel.shs.headcontroller.domain.ResourceBill;
+import ru.rienel.shs.headcontroller.domain.dto.IndicationRecordDto;
+import ru.rienel.shs.headcontroller.domain.dto.PersonDto;
 import ru.rienel.shs.headcontroller.domain.dto.ResourceBillDto;
 
-public class ResourceBillConverter {
+@Component
+public class ResourceBillConverter implements Converter<ResourceBill, ResourceBillDto> {
 
-	private PersonConverter personConverter;
-	private IndicationRecordConverter indicationRecordConverter;
+	private final Converter<Person, PersonDto> personConverter;
+	private final Converter<IndicationRecord, IndicationRecordDto> indicationRecordConverter;
 
+	public ResourceBillConverter(Converter<Person, PersonDto> personConverter,
+	                             Converter<IndicationRecord, IndicationRecordDto> indicationRecordConverter) {
+		this.personConverter = personConverter;
+		this.indicationRecordConverter = indicationRecordConverter;
+	}
+
+	@Override
 	public ResourceBill fromDto(ResourceBillDto dto) {
 		Objects.requireNonNull(dto);
 
@@ -22,12 +36,13 @@ public class ResourceBillConverter {
 		return resourceBill;
 	}
 
-	public ResourceBillDto toDto(ResourceBill resourceBill) {
+	@Override
+	public ResourceBillDto fromDomain(ResourceBill resourceBill) {
 		ResourceBillDto dto = new ResourceBillDto();
 		dto.setSerialNumber(resourceBill.getSerialNumber());
 		dto.setCostPerUnit(resourceBill.getCostPerUnit());
-		dto.setLastIndication(indicationRecordConverter.toDto(resourceBill.getLastIndication()));
-		dto.setPerson(personConverter.toDto(resourceBill.getPerson()));
+		dto.setLastIndication(indicationRecordConverter.fromDomain(resourceBill.getLastIndication()));
+		dto.setPerson(personConverter.fromDomain(resourceBill.getPerson()));
 		dto.setSummary(dto.getSummary());
 		return dto;
 	}

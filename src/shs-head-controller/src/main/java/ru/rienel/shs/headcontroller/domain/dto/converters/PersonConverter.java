@@ -3,11 +3,15 @@ package ru.rienel.shs.headcontroller.domain.dto.converters;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.stereotype.Component;
+
 import ru.rienel.shs.headcontroller.domain.Person;
 import ru.rienel.shs.headcontroller.domain.dto.PersonDto;
 
-public class PersonConverter {
+@Component
+public class PersonConverter implements Converter<Person, PersonDto> {
 
+	@Override
 	public Person fromDto(@NotNull PersonDto dto) {
 		Objects.requireNonNull(dto);
 
@@ -19,7 +23,8 @@ public class PersonConverter {
 		return person;
 	}
 
-	public PersonDto toDto(@NotNull Person person) {
+	@Override
+	public PersonDto fromDomain(@NotNull Person person) {
 		Objects.requireNonNull(person);
 
 		PersonDto dto = new PersonDto();
