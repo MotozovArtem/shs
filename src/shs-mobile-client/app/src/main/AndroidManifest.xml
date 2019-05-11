@@ -11,6 +11,8 @@
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme"
 			tools:ignore="GoogleAppIndexingWarning">
+		<activity android:name=".activity.login.LoginActivity">
+		</activity>
 		<activity android:name=".activity.meter.MeterActivity">
 		</activity>
 		<activity android:name=".activity.person.PersonActivity">

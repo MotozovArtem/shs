@@ -2,7 +2,6 @@ package ru.rienel.shs.mobile.util;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
-import java.util.Objects;
 
 import okhttp3.ResponseBody;
 import retrofit2.Converter;

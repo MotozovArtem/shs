@@ -1,11 +1,17 @@
 <resources>
-	<string name="app_name">shs-mobile-client</string>
+	<string name="app_name" translatable="false">shs-mobile-client</string>
 	<string name="applicationTitle">SHS Mobile Client</string>
-	<string name="empty"/>
+	<string name="empty" translatable="false"/>
 	<string name="OK">OK</string>
 	<string name="cancel">Cancel</string>
-	<string name="acceptr">Accept</string>
+	<string name="accept">Accept</string>
 	<string name="test_text">Test text</string>
 	<string name="open">Open</string>
 	<string name="close">Close</string>
+	<string name="dashboard">Dashboard</string>
+	<string name="persons">Persons</string>
+	<string name="indications">Indications</string>
+	<string name="bills">Bills</string>
+	<string name="meters">Meters</string>
+	<string name="settings">Settings</string>
 </resources>
