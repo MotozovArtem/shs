@@ -6,4 +6,6 @@
 	<string name="cancel">Cancel</string>
 	<string name="acceptr">Accept</string>
 	<string name="test_text">Test text</string>
+	<string name="open">Open</string>
+	<string name="close">Close</string>
 </resources>

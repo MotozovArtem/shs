@@ -15,7 +15,7 @@ public class MainFragment extends Fragment implements MainContract.View {
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_main, container, false);
+		View view = inflater.inflate(R.layout.main_activity, container, false);
 
 		return view;
 	}
