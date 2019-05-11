@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+		xmlns:android="http://schemas.android.com/apk/res/android">
+	<Preference
+			android:key="pref_bug_report"
+			android:title="@string/pref_bug_report_title"
+			android:summary="@string/pref_bug_report_summary"/>
+	<EditTextPreference
+			android:key="perf_hc_address"
+			android:title="@string/pref_hc_address_title"/>
+	<Preference
+			android:title="@string/pref_build_number"
+			android:summary="0.0.1-alpha"/>
+	<ListPreference
+			android:key="pref_lang"
+			android:title="@string/language"
+			android:summary="@string/pref_lang_summary"
+			android:entries="@array/pref_lang_entries"
+			android:entryValues="@array/pref_lang_values"
+			android:defaultValue="@string/pref_lang_default_value"/>
+</PreferenceScreen>

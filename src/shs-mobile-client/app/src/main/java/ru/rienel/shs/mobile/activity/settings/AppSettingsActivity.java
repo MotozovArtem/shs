@@ -6,10 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 
 import ru.rienel.shs.mobile.R;
 
-public class SettingsActivity extends AppCompatActivity {
+public class AppSettingsActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.settings_activity);
+		getSupportFragmentManager()
+				.beginTransaction()
+				.add(R.id.settingsContainer, new AppSettingsFragment())
+				.commit();
 	}
 }

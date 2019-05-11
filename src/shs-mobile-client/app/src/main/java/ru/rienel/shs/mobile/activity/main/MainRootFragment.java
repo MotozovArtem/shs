@@ -19,7 +19,7 @@ import ru.rienel.shs.mobile.activity.bill.BillActivity;
 import ru.rienel.shs.mobile.activity.indication.IndicationsActivity;
 import ru.rienel.shs.mobile.activity.meter.MeterActivity;
 import ru.rienel.shs.mobile.activity.person.PersonActivity;
-import ru.rienel.shs.mobile.activity.settings.SettingsActivity;
+import ru.rienel.shs.mobile.activity.settings.AppSettingsActivity;
 
 public class MainRootFragment extends Fragment implements MainContract.View {
 	private DrawerLayout drawerLayout;
@@ -43,8 +43,6 @@ public class MainRootFragment extends Fragment implements MainContract.View {
 	private NavigationView.OnNavigationItemSelectedListener newNavigationItemSelectedListener() {
 		return menuItem -> {
 			switch (menuItem.getItemId()) {
-				case R.id.menu_dashboard:
-					break;
 				case R.id.menu_persons:
 					startActivity(prepareChangeActivityIntent(PersonActivity.class));
 					break;
@@ -58,7 +56,7 @@ public class MainRootFragment extends Fragment implements MainContract.View {
 					startActivity(prepareChangeActivityIntent(MeterActivity.class));
 					break;
 				case R.id.menu_settings:
-					startActivity(prepareChangeActivityIntent(SettingsActivity.class));
+					startActivity(prepareChangeActivityIntent(AppSettingsActivity.class));
 					break;
 			}
 			return true;

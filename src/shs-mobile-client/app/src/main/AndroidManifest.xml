@@ -14,24 +14,24 @@
 			android:theme="@style/AppTheme"
 			tools:ignore="GoogleAppIndexingWarning">
 		<activity
-				android:label="@string/test_text"
-				android:name=".activity.login.LoginActivity">
+				android:name=".activity.login.LoginActivity"
+				android:label="@string/test_text">
 		</activity>
 		<activity
-				android:label="@string/meters"
-				android:name=".activity.meter.MeterActivity">
+				android:name=".activity.meter.MeterActivity"
+				android:label="@string/meters">
 		</activity>
 		<activity
-				android:label="@string/persons"
-				android:name=".activity.person.PersonActivity">
+				android:name=".activity.person.PersonActivity"
+				android:label="@string/persons">
 		</activity>
 		<activity
-				android:label="@string/bills"
-				android:name=".activity.bill.BillActivity">
+				android:name=".activity.bill.BillActivity"
+				android:label="@string/bills">
 		</activity>
 		<activity
-				android:label="@string/test_text"
-				android:name=".activity.user.UserActivity">
+				android:name=".activity.user.UserActivity"
+				android:label="@string/test_text">
 		</activity>
 		<activity
 				android:name=".activity.main.MainActivity"
@@ -42,6 +42,10 @@
 
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
+		</activity>
+		<activity
+				android:name=".activity.settings.AppSettingsActivity"
+				android:label="@string/settings">
 		</activity>
 	</application>
 
