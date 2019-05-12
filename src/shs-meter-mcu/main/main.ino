@@ -1,8 +1,5 @@
 #include <ArduinoHttpClient.h>
 #include <b64.h>
-
-// #include <b64.h>
-// #include <HttpClient.h>
 #include <Ethernet.h>
 #include <EthernetClient.h>
 #include <SPI.h>
