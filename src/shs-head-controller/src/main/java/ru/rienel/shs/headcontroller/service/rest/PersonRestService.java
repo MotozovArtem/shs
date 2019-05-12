@@ -26,7 +26,7 @@ public class PersonRestService {
 		this.personRepository = personRepository;
 	}
 
-	@GetMapping("all")
+	@GetMapping("/all")
 	public List<Person> getAllPerson() {
 		Iterable<Person> queryResult = personRepository.findAll();
 		List<Person> persons = new LinkedList<>();
@@ -36,7 +36,7 @@ public class PersonRestService {
 		return persons;
 	}
 
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	public Person getPerson(@PathVariable("id") Long id) {
 		Optional<Person> queryResult = personRepository.findById(id);
 		return queryResult.orElse(null);
@@ -48,7 +48,7 @@ public class PersonRestService {
 		return savedPerson != null;
 	}
 
-	@DeleteMapping("{id}")
+	@DeleteMapping("/{id}")
 	public Boolean deletePerson(@PathVariable("id") Long id) {
 		personRepository.deleteById(id);
 		return true;
