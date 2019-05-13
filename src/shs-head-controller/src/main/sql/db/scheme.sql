@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS 'IndicationRecord'
 	'record_date' INTEGER,
 	'delta'       DECIMAL(10, 3),
 	'device'      INTEGER,
-	FOREIGN KEY  ('device') REFERENCES ResourceMeter ('id')
+	FOREIGN KEY ('device') REFERENCES ResourceMeter ('id')
 );
 
 CREATE TABLE IF NOT EXISTS 'ResourceMeter'
