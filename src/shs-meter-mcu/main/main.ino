@@ -12,7 +12,6 @@ const int port = 8080;
 const int networkTimeout = 30 * 1000;
 const int networkDelay = 1000;
 const int sensorPin = 2;
-
 int blinks = 0;
 int kW = 0;
 
@@ -37,36 +36,27 @@ void loop()
     int sensorValue = analogRead(sensorPin);
     Serial.print("Sensor value: ");
     Serial.println(sensorValue);
-
     if (sensorValue > 600)
     {
         blinks++;
     }
-
     if (blinks == 10)
     {
         Serial.println("kW++");
         kW++;
         blinks = 0;
-
         if (kW % 2 == 0 && kW != 0)
         {
-
             Record record;
             record.value = kW;
             record.toJson();
             Serial.println(record.result);
-
             EthernetClient ethClient;
             HttpClient httpClient(ethClient, headControllerUrl, port);
-
             String contentType = "application/json";
-
             httpClient.post("/api/v1/record/add", contentType, record.result);
-
             int statusCode = httpClient.responseStatusCode();
             String response = httpClient.responseBody();
-
             Serial.print("Status code: ");
             Serial.println(statusCode);
             Serial.print("Response: ");

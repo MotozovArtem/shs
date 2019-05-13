@@ -3,13 +3,7 @@ package ru.rienel.shs.headcontroller.domain.dto;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-
 import lombok.ToString;
-
-import ru.rienel.shs.headcontroller.domain.ResourceMeter;
 
 @ToString(of = {"recordUuid", "value", "recordDate"})
 public class IndicationRecordDto {
