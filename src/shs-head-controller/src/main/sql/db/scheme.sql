@@ -35,7 +35,9 @@ CREATE TABLE IF NOT EXISTS 'IndicationRecord'
 	'record_uuid' VARCHAR(60) UNIQUE NOT NULL,
 	'value'       DECIMAL(10, 3),
 	'record_date' INTEGER,
-	'delta'       DECIMAL(10, 3)
+	'delta'       DECIMAL(10, 3),
+	'device'      INTEGER,
+	FOREIGN KEY  ('device') REFERENCES ResourceMeter ('id')
 );
 
 CREATE TABLE IF NOT EXISTS 'ResourceMeter'
