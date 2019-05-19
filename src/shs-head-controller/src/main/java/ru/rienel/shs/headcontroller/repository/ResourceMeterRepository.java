@@ -6,4 +6,6 @@ import ru.rienel.shs.headcontroller.domain.ResourceMeter;
 
 public interface ResourceMeterRepository extends CrudRepository<ResourceMeter, Long> {
 	ResourceMeter findBySerialNumber(String serialNumber);
+
+	boolean deleteBySerialNumber(String serialNumber);
 }
