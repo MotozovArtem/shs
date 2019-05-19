@@ -4,11 +4,15 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Stack;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.ToString;
 
 import ru.rienel.shs.headcontroller.domain.ResourceMeter;
 import ru.rienel.shs.headcontroller.domain.ResourceType;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @ToString(of = {"serialNumber", "type"})
 public class ResourceMeterDto {
 

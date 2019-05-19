@@ -13,6 +13,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
+import ru.rienel.shs.headcontroller.config.ConvertersConfiguration;
 import ru.rienel.shs.headcontroller.config.DatabaseProperties;
 import ru.rienel.shs.headcontroller.domain.CustomUser;
 import ru.rienel.shs.headcontroller.domain.Person;

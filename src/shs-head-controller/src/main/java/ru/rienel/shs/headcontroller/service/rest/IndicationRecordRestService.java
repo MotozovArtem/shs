@@ -1,8 +1,13 @@
 package ru.rienel.shs.headcontroller.service.rest;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +18,9 @@ import org.slf4j.LoggerFactory;
 
 import ru.rienel.shs.headcontroller.domain.IndicationRecord;
 import ru.rienel.shs.headcontroller.domain.ResourceMeter;
+import ru.rienel.shs.headcontroller.domain.ResourceType;
 import ru.rienel.shs.headcontroller.domain.dto.IndicationRecordDto;
+import ru.rienel.shs.headcontroller.domain.dto.IndicationRecordMobileDto;
 import ru.rienel.shs.headcontroller.domain.dto.converters.Converter;
 import ru.rienel.shs.headcontroller.repository.IndicationRecordRepository;
 import ru.rienel.shs.headcontroller.repository.ResourceMeterRepository;
@@ -23,20 +30,18 @@ import ru.rienel.shs.headcontroller.repository.ResourceMeterRepository;
 public class IndicationRecordRestService {
 	private static final Logger log = LoggerFactory.getLogger(IndicationRecordRestService.class);
 
+	@Autowired
 	private IndicationRecordRepository indicationRecordRepository;
 
+	@Autowired
 	private ResourceMeterRepository resourceMeterRepository;
 
-	private final Converter<IndicationRecord, IndicationRecordDto> converter;
+	@Autowired
+	private Converter<IndicationRecord, IndicationRecordDto> converter;
 
 	@Autowired
-	public IndicationRecordRestService(IndicationRecordRepository indicationRecordRepository,
-	                                   ResourceMeterRepository resourceMeterRepository,
-	                                   Converter<IndicationRecord, IndicationRecordDto> converter) {
-		this.indicationRecordRepository = indicationRecordRepository;
-		this.resourceMeterRepository = resourceMeterRepository;
-		this.converter = converter;
-	}
+	private Converter<IndicationRecord, IndicationRecordMobileDto> converterMobile;
+
 
 	@PostMapping("/add")
 	public ResponseEntity receiveRecord(@RequestBody IndicationRecordDto recordDto) {
@@ -50,4 +55,26 @@ public class IndicationRecordRestService {
 		return new ResponseEntity(HttpStatus.OK);
 	}
 
+	@GetMapping("/")
+	public List<IndicationRecordMobileDto> getForMobileClient() {
+		List<IndicationRecordMobileDto> dtoList = new LinkedList<>();
+		Iterable<IndicationRecord> queryResult = indicationRecordRepository.findAll();
+		for (IndicationRecord record : queryResult) {
+			dtoList.add(converterMobile.fromDomain(record));
+		}
+		return dtoList;
+	}
+
+	@GetMapping("/{type}")
+	public Object getForMobileClientByResourceType(@PathVariable("type") ResourceType resourceType) {
+		if (resourceType == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		List<IndicationRecordMobileDto> dtoList = new LinkedList<>();
+		Iterable<IndicationRecord> queryResult = indicationRecordRepository.findAllByDevice_Type(resourceType);
+		for (IndicationRecord record : queryResult) {
+			dtoList.add(converterMobile.fromDomain(record));
+		}
+		return dtoList;
+	}
 }

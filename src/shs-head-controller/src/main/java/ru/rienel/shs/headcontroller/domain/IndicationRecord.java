@@ -20,7 +20,7 @@ import ru.rienel.shs.headcontroller.domain.converter.ZonedDateTimeConverter;
 
 @Entity(name = "IndicationRecord")
 @Table(name = "IndicationRecord")
-@ToString
+@ToString(of={"id", "recordUuid", "value", "recordDate", "device"})
 public class IndicationRecord {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
