@@ -26,7 +26,9 @@ public class PersonPresenter implements PersonContract.Presenter {
 	private final List<EventListener> listeners = new CopyOnWriteArrayList<>();
 
 	private PersonContract.View personRootView;
+
 	private PersonApiClient apiClient;
+
 	private SharedPreferences sharedPreferences;
 
 	public PersonPresenter(PersonContract.View personRootView, SharedPreferences sharedPreferences) {

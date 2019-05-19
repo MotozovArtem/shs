@@ -1,0 +1,87 @@
+package ru.rienel.shs.mobile.activity.indication;
+
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import ru.rienel.shs.mobile.R;
+
+public class IndicationRootFragment extends Fragment implements IndicationContract.View, SwipeRefreshLayout.OnRefreshListener {
+
+	private SwipeRefreshLayout swipeRefreshLayout;
+
+	private IndicationListFragment indicationListFragment;
+
+	private IndicationContract.Presenter indicationPresenter;
+
+	public static IndicationRootFragment getInstance() {
+		IndicationRootFragment fragment = new IndicationRootFragment();
+		return fragment;
+	}
+
+	@Nullable
+	@Override
+	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.indication_root_fragment, container, false);
+		swipeRefreshLayout = view.findViewById(R.id.indicationSwipeRefreshLayout);
+		swipeRefreshLayout.setOnRefreshListener(this);
+		swipeRefreshLayout.setColorSchemeResources(
+				android.R.color.holo_red_light,
+				android.R.color.holo_blue_light,
+				android.R.color.holo_green_light,
+				android.R.color.holo_orange_light);
+
+		swipeRefreshLayout.post(() -> {
+			swipeRefreshLayout.setRefreshing(true);
+			indicationPresenter.loadData();
+		});
+
+		setHasOptionsMenu(true);
+
+		((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+		((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		FragmentManager fragmentManager = getFragmentManager();
+		indicationListFragment = (IndicationListFragment)fragmentManager.findFragmentById(R.id.indicationSwipeRefreshLayout);
+		if (indicationListFragment == null) {
+			indicationListFragment = IndicationListFragment.getInstance(indicationPresenter);
+			fragmentManager.beginTransaction()
+					.add(R.id.indicationSwipeRefreshLayout, indicationListFragment)
+					.commit();
+		}
+		return view;
+	}
+
+	@Override
+	public void setPresenter(IndicationContract.Presenter presenter) {
+		this.indicationPresenter = presenter;
+	}
+
+	@Override
+	public void onRefresh() {
+
+	}
+
+	@Override
+	public void makeShortToast(int stringResource) {
+		Toast.makeText(getContext(), stringResource, Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void makeLongToast(int stringResource) {
+		Toast.makeText(getContext(), stringResource, Toast.LENGTH_LONG).show();
+	}
+
+	@Override
+	public void makeShortToastWithText(String message) {
+		Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+	}
+}
