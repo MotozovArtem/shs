@@ -2,8 +2,12 @@
 <PreferenceScreen
 		xmlns:android="http://schemas.android.com/apk/res/android">
 	<EditTextPreference
-			android:key="perf_hc_address"
+			android:key="pref_hc_address"
 			android:title="@string/pref_hc_address_title"/>
+	<EditTextPreference
+			android:key="pref_hc_port"
+			android:title="@string/pref_hc_port_title"
+			android:defaultValue="@string/pref_hs_port_default"/>
 	<ListPreference
 			android:key="pref_lang"
 			android:title="@string/language"

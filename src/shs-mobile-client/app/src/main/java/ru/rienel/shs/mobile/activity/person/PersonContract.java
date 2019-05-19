@@ -1,5 +1,7 @@
 package ru.rienel.shs.mobile.activity.person;
 
+import android.content.SharedPreferences;
+
 import ru.rienel.shs.mobile.activity.BasePresenter;
 import ru.rienel.shs.mobile.activity.BaseView;
 import ru.rienel.shs.mobile.util.HaveListeners;

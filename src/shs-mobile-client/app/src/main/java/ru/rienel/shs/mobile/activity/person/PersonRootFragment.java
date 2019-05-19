@@ -83,4 +83,5 @@ public class PersonRootFragment extends Fragment implements PersonContract.View,
 	public void setRefreshing(Boolean isRefreshing) {
 		swipeRefreshLayout.setRefreshing(isRefreshing);
 	}
+
 }

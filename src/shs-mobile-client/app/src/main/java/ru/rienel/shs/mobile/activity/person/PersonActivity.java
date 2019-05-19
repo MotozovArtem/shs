@@ -1,6 +1,7 @@
 package ru.rienel.shs.mobile.activity.person;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
@@ -25,7 +26,7 @@ public class PersonActivity extends AppCompatActivity {
 					.add(R.id.personRootFragmentContainer, personRootFragment)
 					.commit();
 		}
-		personPresenter = new PersonPresenter(personRootFragment);
+		personPresenter = new PersonPresenter(personRootFragment, PreferenceManager.getDefaultSharedPreferences(this));
 
 		personRootFragment.setPresenter(personPresenter);
 	}
