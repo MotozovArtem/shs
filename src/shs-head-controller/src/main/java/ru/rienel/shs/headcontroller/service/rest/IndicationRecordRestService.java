@@ -2,6 +2,7 @@ package ru.rienel.shs.headcontroller.service.rest;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,6 @@ import ru.rienel.shs.headcontroller.domain.IndicationRecord;
 import ru.rienel.shs.headcontroller.domain.ResourceMeter;
 import ru.rienel.shs.headcontroller.domain.ResourceType;
 import ru.rienel.shs.headcontroller.domain.dto.IndicationRecordDto;
-import ru.rienel.shs.headcontroller.domain.dto.IndicationRecordMobileDto;
 import ru.rienel.shs.headcontroller.domain.dto.converters.Converter;
 import ru.rienel.shs.headcontroller.repository.IndicationRecordRepository;
 import ru.rienel.shs.headcontroller.repository.ResourceMeterRepository;
@@ -73,5 +73,15 @@ public class IndicationRecordRestService {
 			responseList.add(record);
 		}
 		return responseList;
+	}
+
+	@GetMapping("/{id}")
+	public IndicationRecord getDetailsForIndicationRecord(@PathVariable("id") Long id) {
+		Optional<IndicationRecord> queryResult = indicationRecordRepository.findById(id);
+		IndicationRecord record = null;
+		if (queryResult.isPresent()) {
+			record = queryResult.get();
+		}
+		return record;
 	}
 }
