@@ -39,9 +39,6 @@ public class IndicationRecordRestService {
 	@Autowired
 	private Converter<IndicationRecord, IndicationRecordDto> converter;
 
-	@Autowired
-	private Converter<IndicationRecord, IndicationRecordMobileDto> converterMobile;
-
 
 	@PostMapping("/add")
 	public ResponseEntity receiveRecord(@RequestBody IndicationRecordDto recordDto) {
@@ -56,13 +53,13 @@ public class IndicationRecordRestService {
 	}
 
 	@GetMapping("/")
-	public List<IndicationRecordMobileDto> getForMobileClient() {
-		List<IndicationRecordMobileDto> dtoList = new LinkedList<>();
+	public List<IndicationRecord> getForMobileClient() {
+		List<IndicationRecord> responseList = new LinkedList<>();
 		Iterable<IndicationRecord> queryResult = indicationRecordRepository.findAll();
 		for (IndicationRecord record : queryResult) {
-			dtoList.add(converterMobile.fromDomain(record));
+			responseList.add(record);
 		}
-		return dtoList;
+		return responseList;
 	}
 
 	@GetMapping("/{type}")
@@ -70,11 +67,11 @@ public class IndicationRecordRestService {
 		if (resourceType == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		List<IndicationRecordMobileDto> dtoList = new LinkedList<>();
+		List<IndicationRecord> responseList = new LinkedList<>();
 		Iterable<IndicationRecord> queryResult = indicationRecordRepository.findAllByDevice_Type(resourceType);
 		for (IndicationRecord record : queryResult) {
-			dtoList.add(converterMobile.fromDomain(record));
+			responseList.add(record);
 		}
-		return dtoList;
+		return responseList;
 	}
 }

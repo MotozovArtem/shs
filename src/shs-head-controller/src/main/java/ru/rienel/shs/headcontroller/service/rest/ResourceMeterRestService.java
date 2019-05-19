@@ -7,14 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ru.rienel.shs.headcontroller.domain.ResourceMeter;
-import ru.rienel.shs.headcontroller.domain.dto.ResourceMeterDto;
-import ru.rienel.shs.headcontroller.domain.dto.converters.Converter;
 import ru.rienel.shs.headcontroller.repository.ResourceMeterRepository;
 
 @RestController
@@ -23,34 +22,39 @@ public class ResourceMeterRestService {
 	@Autowired
 	private ResourceMeterRepository resourceMeterRepository;
 
-	@Autowired
-	private Converter<ResourceMeter, ResourceMeterDto> converter;
-
 	@GetMapping("/")
-	public List<ResourceMeterDto> getAllMeters() {
-		List<ResourceMeterDto> dtoList = new LinkedList<>();
+	public List<ResourceMeter> getAllMeters() {
+		List<ResourceMeter> resultList = new LinkedList<>();
 		Iterable<ResourceMeter> queryResult = resourceMeterRepository.findAll();
 		for (ResourceMeter meter : queryResult) {
-			dtoList.add(converter.fromDomain(meter));
+			resultList.add(meter);
 		}
-		return dtoList;
+		return resultList;
 	}
 
 	@GetMapping("/{serialNumber}")
-	public ResourceMeterDto getAllMetersBySerialNumber(@PathVariable("serialNumber") String serialNumber) {
-		ResourceMeter queryResult = resourceMeterRepository.findBySerialNumber(serialNumber);
-		return converter.fromDomain(queryResult);
+	public ResourceMeter getAllMetersBySerialNumber(@PathVariable("serialNumber") String serialNumber) {
+		return resourceMeterRepository.findBySerialNumber(serialNumber);
 	}
 
-	@PutMapping("/add")
-	public ResourceMeterDto addMeters(@RequestBody ResourceMeterDto meterDto) {
-		ResourceMeter meterForAdd = converter.fromDto(meterDto);
-		ResourceMeter result = resourceMeterRepository.save(meterForAdd);
-		return converter.fromDomain(result);
+	@PutMapping("/")
+	public ResourceMeter addMeters(@RequestBody ResourceMeter resourceMeter) {
+		return resourceMeterRepository.save(resourceMeter);
+	}
+
+	@PostMapping("/{serialNumber}")
+	public Boolean updateMeter(@PathVariable("serialNumber") String serialNumber, @RequestBody ResourceMeter resourceMeter) {
+		ResourceMeter meterForUpdate = resourceMeterRepository.findBySerialNumber(serialNumber);
+		meterForUpdate.setType(resourceMeter.getType());
+		meterForUpdate.setNeighbors(resourceMeter.getNeighbors());
+		meterForUpdate.setAddedTime(resourceMeter.getAddedTime());
+		meterForUpdate.setVerification(resourceMeter.getVerification());
+		resourceMeterRepository.save(meterForUpdate);
+		return true;
 	}
 
 	@DeleteMapping("/{serialNumber}")
-	public boolean deleteMeter(@PathVariable("serialNumber") String serialNumber) {
+	public Boolean deleteMeter(@PathVariable("serialNumber") String serialNumber) {
 		return resourceMeterRepository.deleteBySerialNumber(serialNumber);
 	}
 }

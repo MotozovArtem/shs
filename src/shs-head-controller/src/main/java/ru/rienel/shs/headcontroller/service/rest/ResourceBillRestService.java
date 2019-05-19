@@ -6,12 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ru.rienel.shs.headcontroller.domain.ResourceBill;
-import ru.rienel.shs.headcontroller.domain.dto.ResourceBillDto;
-import ru.rienel.shs.headcontroller.domain.dto.converters.Converter;
 import ru.rienel.shs.headcontroller.repository.ResourceBillRepository;
 
 @RestController
@@ -20,26 +21,35 @@ public class ResourceBillRestService {
 	@Autowired
 	private ResourceBillRepository resourceBillRepository;
 
-	@Autowired
-	private Converter<ResourceBill, ResourceBillDto> converter;
-
 	@GetMapping("/")
-	public List<ResourceBillDto> getAllResourceBills() {
-		List<ResourceBillDto> dtoList = new LinkedList<>();
+	public List<ResourceBill> getAllResourceBills() {
+		List<ResourceBill> resultList = new LinkedList<>();
 		Iterable<ResourceBill> queryResult = resourceBillRepository.findAll();
 		for (ResourceBill resourceBill : queryResult) {
-			dtoList.add(converter.fromDomain(resourceBill));
+			resultList.add(resourceBill);
 		}
-		return dtoList;
+		return resultList;
 	}
 
 	@GetMapping("/{serialNumber}")
-	public List<ResourceBillDto> getAllResourceBillsBySerialNumber(@PathVariable("serialNumber") String serialNumber) {
-		List<ResourceBillDto> dtoList = new LinkedList<>();
-		Iterable<ResourceBill> queryResult = resourceBillRepository.findBySerialNumber(serialNumber);
-		for (ResourceBill resourceBill : queryResult) {
-			dtoList.add(converter.fromDomain(resourceBill));
-		}
-		return dtoList;
+	public ResourceBill getResourceBillsBySerialNumber(@PathVariable("serialNumber") String serialNumber) {
+		return resourceBillRepository.findBySerialNumber(serialNumber);
+	}
+
+	@PutMapping("/add")
+	public Boolean addResourceBill(@RequestBody ResourceBill resourceBill) {
+		resourceBillRepository.save(resourceBill);
+		return true;
+	}
+
+	@PostMapping("/{serialNumber}")
+	public Boolean updateResourceBill(@RequestBody ResourceBill resourceBill) {
+		ResourceBill bill = resourceBillRepository.findBySerialNumber(resourceBill.getSerialNumber());
+		bill.setCostPerUnit(resourceBill.getCostPerUnit());
+		bill.setLastIndication(resourceBill.getLastIndication());
+		bill.setPerson(resourceBill.getPerson());
+		bill.setSummary(resourceBill.getSummary());
+		resourceBillRepository.save(bill);
+		return true;
 	}
 }

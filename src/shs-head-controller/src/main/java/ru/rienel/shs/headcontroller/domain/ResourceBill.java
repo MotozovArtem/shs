@@ -21,7 +21,7 @@ public class ResourceBill {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@Column(name = "serial_number", length = 100)
+	@Column(name = "serial_number", length = 100, unique = true)
 	private String serialNumber;
 
 	@Column(name = "cost_per_unit", precision = 5, scale = 2)
