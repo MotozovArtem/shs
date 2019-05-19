@@ -9,11 +9,11 @@ public class ZonedDateTimeConverter implements AttributeConverter<ZonedDateTime,
 
 	@Override
 	public Long convertToDatabaseColumn(ZonedDateTime zonedDateTime) {
-		return zonedDateTime.toEpochSecond();
+		return zonedDateTime.toInstant().toEpochMilli();
 	}
 
 	@Override
 	public ZonedDateTime convertToEntityAttribute(Long aLong) {
-		return ZonedDateTime.ofInstant(Instant.ofEpochSecond(aLong), ZoneOffset.UTC);
+		return ZonedDateTime.ofInstant(Instant.ofEpochMilli(aLong), ZoneOffset.UTC);
 	}
 }

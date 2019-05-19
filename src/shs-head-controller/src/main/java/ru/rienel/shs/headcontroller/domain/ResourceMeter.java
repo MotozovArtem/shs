@@ -30,10 +30,10 @@ public class ResourceMeter {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@Column(name = "serial_number")
+	@Column(name = "serial_number", unique = true)
 	private String serialNumber;
 
-	@Column(name = "type")
+	@Column(name = "type", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private ResourceType type;
 

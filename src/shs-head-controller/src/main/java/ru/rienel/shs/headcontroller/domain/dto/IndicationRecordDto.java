@@ -1,30 +1,13 @@
 package ru.rienel.shs.headcontroller.domain.dto;
 
-import java.time.ZonedDateTime;
-import java.util.UUID;
-
 import lombok.ToString;
 
-@ToString(of = {"recordUuid", "value", "recordDate"})
+@ToString(of = {"value", "serialNumber"})
 public class IndicationRecordDto {
-
-	private UUID recordUuid;
 
 	private Double value;
 
-	private ZonedDateTime recordDate;
-
-	private Double delta;
-
-	private ResourceMeterDto device;
-
-	public UUID getRecordUuid() {
-		return recordUuid;
-	}
-
-	public void setRecordUuid(UUID recordUuid) {
-		this.recordUuid = recordUuid;
-	}
+	private String serialNumber;
 
 	public Double getValue() {
 		return value;
@@ -34,27 +17,11 @@ public class IndicationRecordDto {
 		this.value = value;
 	}
 
-	public ZonedDateTime getRecordDate() {
-		return recordDate;
+	public String getSerialNumber() {
+		return serialNumber;
 	}
 
-	public void setRecordDate(ZonedDateTime recordDate) {
-		this.recordDate = recordDate;
-	}
-
-	public Double getDelta() {
-		return delta;
-	}
-
-	public void setDelta(Double delta) {
-		this.delta = delta;
-	}
-
-	public ResourceMeterDto getDevice() {
-		return device;
-	}
-
-	public void setDevice(ResourceMeterDto device) {
-		this.device = device;
+	public void setSerialNumber(String serialNumber) {
+		this.serialNumber = serialNumber;
 	}
 }

@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS 'Person'
 CREATE TABLE IF NOT EXISTS 'ResourceBill'
 (
 	'id'              INTEGER PRIMARY KEY,
-	'serial_mumber'   VARCHAR(100) NOT NULL,
+	'serial_number'   VARCHAR(100) NOT NULL,
 	'cost_per_unit'   DECIMAL(5, 2),
 	'summary'         DECIMAL(8, 2),
 	'person'          INTEGER,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS 'ResourceMeter'
 	'serial_number' VARCHAR(32),
 	'type'          VARCHAR(100),
 	'verification'  TEXT,
-	'addedTime'     INTEGER
+	'added_time'     INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS 'ResourceMeterNeighbors'

@@ -9,11 +9,11 @@ public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime,
 
 	@Override
 	public Long convertToDatabaseColumn(LocalDateTime localDateTime) {
-		return localDateTime.toEpochSecond(ZoneOffset.UTC);
+		return localDateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
 	}
 
 	@Override
 	public LocalDateTime convertToEntityAttribute(Long aLong) {
-		return LocalDateTime.ofInstant(Instant.ofEpochSecond(aLong), ZoneOffset.UTC);
+		return LocalDateTime.ofInstant(Instant.ofEpochMilli(aLong), ZoneOffset.UTC);
 	}
 }

@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -40,7 +41,7 @@ public class IndicationRecord {
 	@Column(name = "delta", precision = 10, scale = 3)
 	private Double delta;
 
-	@Column(name = "device", nullable = false)
+	@JoinColumn(name = "device", nullable = false)
 	@ManyToOne(optional = false, targetEntity = ResourceMeter.class, fetch = FetchType.LAZY)
 	private ResourceMeter device;
 
