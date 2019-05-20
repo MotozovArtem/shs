@@ -3,4 +3,30 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent">
 
+	<TextView
+			android:id="@+id/indication_list_item_value"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+	<TextView
+			android:id="@+id/indication_list_item_meter_label"
+			android:text="@string/meter"
+			android:layout_below="@id/indication_list_item_value"
+			android:layout_marginEnd="5dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<TextView
+			android:id="@+id/indication_list_item_meter"
+			android:layout_toEndOf="@id/indication_list_item_meter_label"
+			android:layout_below="@id/indication_list_item_value"
+			android:text="@string/test_text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<ImageView
+			android:src="@drawable/flash64"
+			android:layout_alignParentEnd="true"
+			android:id="@+id/indication_list_item_resource_type"
+			android:layout_width="32dp"
+			android:layout_height="32dp"/>
 </RelativeLayout>

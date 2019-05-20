@@ -35,4 +35,5 @@
 	<string name="pref_lang_default_value" translatable="false">English</string>
 	<string name="pref_hc_port_title">Edit Head Controller port</string>
 	<string name="pref_hs_port_default" translatable="false">8080</string>
+	<string name="meter">Meter:</string>
 </resources>

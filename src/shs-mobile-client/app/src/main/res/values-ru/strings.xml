@@ -22,4 +22,5 @@
 	<string name="pref_bug_report_summary">Сообщить об ошибках и предложить улучшения</string>
 	<string name="pref_bug_report_title">Отправить отчет об ошибке или предложение</string>
 	<string name="pref_hc_port_title">Изменить порт Головного Контроллера</string>
+	<string name="meter">Счетчик:</string>
 </resources>
