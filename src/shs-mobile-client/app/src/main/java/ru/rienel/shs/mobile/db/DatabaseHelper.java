@@ -20,14 +20,21 @@ import ru.rienel.shs.mobile.domain.User;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private static final String TAG = DatabaseHelper.class.getName();
+
 	private static final String DATABASE_NAME = "storage.db";
+
 	private static final int DATABASE_VERSION = 1;
 
 	private Dao<User, Long> userDao;
+
 	private Dao<Person, Long> personDao;
+
 	private Dao<ResourceBill, Long> resourceBillDao;
+
 	private Dao<ResourceMeter, Long> resourceMeterDao;
+
 	private Dao<IndicationRecord, Long> indicationRecordDao;
+
 
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);

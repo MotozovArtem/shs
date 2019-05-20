@@ -51,6 +51,7 @@
 				android:name=".activity.settings.AppSettingsActivity"
 				android:label="@string/settings">
 		</activity>
+		<activity android:name=".activity.indication.pager.IndicationPagerActivity"/>
 	</application>
 
 </manifest>
