@@ -42,7 +42,7 @@ public class IndicationRecord {
 	private Double delta;
 
 	@JoinColumn(name = "device", nullable = false)
-	@ManyToOne(optional = false, targetEntity = ResourceMeter.class, fetch = FetchType.LAZY)
+	@ManyToOne(optional = false, targetEntity = ResourceMeter.class)
 	private ResourceMeter device;
 
 	public Long getId() {

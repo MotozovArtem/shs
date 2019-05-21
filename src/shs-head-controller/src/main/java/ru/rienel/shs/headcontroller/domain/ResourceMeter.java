@@ -44,7 +44,7 @@ public class ResourceMeter {
 	@Convert(converter = ZonedDateTimeConverter.class)
 	private ZonedDateTime addedTime;
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "ResourceMeterNeighbors",
 			joinColumns = @JoinColumn(name = "neighbor_resource_meter_id"),
 			inverseJoinColumns = @JoinColumn(name = "resource_meter_id"))

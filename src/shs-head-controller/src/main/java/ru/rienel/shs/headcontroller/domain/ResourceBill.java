@@ -31,11 +31,11 @@ public class ResourceBill {
 	private Double summary;
 
 	@JoinColumn(name = "person")
-	@ManyToOne(targetEntity = Person.class, fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(targetEntity = Person.class, optional = false)
 	private Person person;
 
 	@JoinColumn(name = "last_indication")
-	@ManyToOne(targetEntity = IndicationRecord.class, fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(targetEntity = IndicationRecord.class, optional = false)
 	private IndicationRecord lastIndication;
 
 	public Long getId() {
