@@ -15,14 +15,17 @@ public class IndicationRecord {
 	@DatabaseField(columnName = "id", generatedId = true)
 	private Long id;
 
-	@DatabaseField(columnName = "record_uuid", dataType = DataType.UUID)
+	@DatabaseField(columnName = "record_uuid", dataType = DataType.UUID, canBeNull = false)
 	private UUID recordUuid;
 
-	@DatabaseField(columnName = "value")
+	@DatabaseField(columnName = "value", canBeNull = false)
 	private Double value;
 
 	@DatabaseField(columnName = "record_date", dataType = DataType.DATE)
 	private Date recordDate;
+
+	@DatabaseField(columnName = "device", foreign = true, canBeNull = false)
+	private ResourceMeter device;
 
 	@DatabaseField(columnName = "delta")
 	private Double delta;
@@ -60,6 +63,14 @@ public class IndicationRecord {
 
 	public void setRecordDate(Date recordDate) {
 		this.recordDate = recordDate;
+	}
+
+	public ResourceMeter getDevice() {
+		return device;
+	}
+
+	public void setDevice(ResourceMeter device) {
+		this.device = device;
 	}
 
 	public Double getDelta() {

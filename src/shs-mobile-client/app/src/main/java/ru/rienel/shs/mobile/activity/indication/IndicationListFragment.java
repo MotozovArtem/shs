@@ -2,6 +2,7 @@ package ru.rienel.shs.mobile.activity.indication;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,9 +13,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import ru.rienel.shs.mobile.R;
 import ru.rienel.shs.mobile.domain.IndicationRecord;
+import ru.rienel.shs.mobile.domain.ResourceType;
 
 public class IndicationListFragment extends Fragment {
 
@@ -88,13 +92,42 @@ public class IndicationListFragment extends Fragment {
 	}
 
 	private class IndicationHolder extends RecyclerView.ViewHolder {
+		private IndicationRecord indicationRecord;
+
+		private TextView indicationValue;
+		private TextView meterLabel;
+		private ImageView resourceTypeImage;
+
 
 		public IndicationHolder(@NonNull View itemView) {
 			super(itemView);
+
+			indicationValue = itemView.findViewById(R.id.indication_list_item_value);
+			meterLabel = itemView.findViewById(R.id.indication_list_item_meter);
+			resourceTypeImage = itemView.findViewById(R.id.indication_list_item_resource_type);
 		}
 
 		public void bind(IndicationRecord indicationRecord) {
+			this.indicationRecord = indicationRecord;
 
+			indicationValue.setText(String.format(Locale.getDefault(), "%.3f", indicationRecord.getValue()));
+			meterLabel.setText(indicationRecord.getDevice().getSerialNumber());
+
+		}
+
+		private int getDrawableResource(ResourceType resourceType) {
+			switch (resourceType) {
+				case ELECTRICITY:
+					return R.drawable.flash64;
+				case GAS:
+					return R.drawable.gas64;
+				case HOT_WATER:
+					return R.drawable.hot_water64;
+				case COLD_WATER:
+					return R.drawable.cold_water64;
+				default:
+					return R.drawable.app_icon;
+			}
 		}
 	}
 

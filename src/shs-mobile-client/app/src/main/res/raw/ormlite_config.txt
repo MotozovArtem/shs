@@ -1,5 +1,5 @@
 #
-# generated on 2019/05/10 02:54:09
+# generated on 2019/05/24 10:38:36
 #
 # --table-start--
 dataClass=ru.rienel.shs.mobile.domain.User
@@ -117,6 +117,7 @@ columnName=verification
 # --field-start--
 fieldName=addedTime
 columnName=added_time
+dataPersister=DATE
 # --field-end--
 # --field-start--
 fieldName=neighbors
@@ -138,15 +139,23 @@ generatedId=true
 fieldName=recordUuid
 columnName=record_uuid
 dataPersister=UUID
+canBeNull=false
 # --field-end--
 # --field-start--
 fieldName=value
 columnName=value
+canBeNull=false
 # --field-end--
 # --field-start--
 fieldName=recordDate
 columnName=record_date
 dataPersister=DATE
+# --field-end--
+# --field-start--
+fieldName=device
+columnName=device
+canBeNull=false
+foreign=true
 # --field-end--
 # --field-start--
 fieldName=delta
