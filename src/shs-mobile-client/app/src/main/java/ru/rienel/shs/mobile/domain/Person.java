@@ -8,19 +8,19 @@ import lombok.ToString;
 @ToString(of = {"id", "name", "surname", "patronymic"})
 public class Person {
 
-	@DatabaseField(generatedId = true)
+	@DatabaseField(columnName = "id")
 	private Long id;
 
-	@DatabaseField(canBeNull = false, width = 100)
+	@DatabaseField(columnName = "name",canBeNull = false, width = 100)
 	private String name;
 
-	@DatabaseField(canBeNull = false, width = 100)
+	@DatabaseField(columnName = "surname",canBeNull = false, width = 100)
 	private String surname;
 
-	@DatabaseField(width = 100)
+	@DatabaseField(columnName = "patronymic", width = 100)
 	private String patronymic;
 
-	@DatabaseField
+	@DatabaseField(columnName = "address")
 	private String address;
 
 	public Person() {

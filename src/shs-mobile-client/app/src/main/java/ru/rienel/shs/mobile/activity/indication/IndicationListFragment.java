@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import ru.rienel.shs.mobile.R;
+import ru.rienel.shs.mobile.activity.indication.pager.IndicationPagerActivity;
 import ru.rienel.shs.mobile.domain.IndicationRecord;
 import ru.rienel.shs.mobile.domain.ResourceType;
 
@@ -92,7 +94,7 @@ public class IndicationListFragment extends Fragment {
 		}
 	}
 
-	private class IndicationHolder extends RecyclerView.ViewHolder {
+	private class IndicationHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 		private IndicationRecord indicationRecord;
 
 		private TextView indicationValue;
@@ -129,6 +131,12 @@ public class IndicationListFragment extends Fragment {
 				default:
 					return R.drawable.app_icon;
 			}
+		}
+
+		@Override
+		public void onClick(View v) {
+			Intent intent = IndicationPagerActivity.newIntent(getActivity(), indicationRecord.getId());
+			startActivity(intent);
 		}
 	}
 

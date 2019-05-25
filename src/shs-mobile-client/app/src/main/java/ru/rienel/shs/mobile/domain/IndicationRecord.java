@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString(of = {"id", "recordUuid", "recordDate"})
 public class IndicationRecord {
 
-	@DatabaseField(columnName = "id", generatedId = true)
+	@DatabaseField(columnName = "id")
 	private Long id;
 
 	@DatabaseField(columnName = "record_uuid", dataType = DataType.UUID, canBeNull = false)

@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 
 import ru.rienel.shs.mobile.R;
 import ru.rienel.shs.mobile.activity.bill.BillActivity;
-import ru.rienel.shs.mobile.activity.indication.IndicationsActivity;
+import ru.rienel.shs.mobile.activity.indication.IndicationActivity;
 import ru.rienel.shs.mobile.activity.meter.MeterActivity;
 import ru.rienel.shs.mobile.activity.person.PersonActivity;
 import ru.rienel.shs.mobile.activity.settings.AppSettingsActivity;
@@ -50,7 +50,7 @@ public class MainRootFragment extends Fragment implements MainContract.View {
 					startActivity(prepareChangeActivityIntent(BillActivity.class));
 					break;
 				case R.id.menu_indications:
-					startActivity(prepareChangeActivityIntent(IndicationsActivity.class));
+					startActivity(prepareChangeActivityIntent(IndicationActivity.class));
 					break;
 				case R.id.menu_meters:
 					startActivity(prepareChangeActivityIntent(MeterActivity.class));

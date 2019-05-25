@@ -28,7 +28,7 @@
 				android:label="@string/testText">
 		</activity>
 		<activity
-				android:name=".activity.indication.IndicationsActivity"
+				android:name=".activity.indication.IndicationActivity"
 				android:label="@string/indications">
 		</activity>
 		<activity

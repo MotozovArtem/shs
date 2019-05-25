@@ -9,6 +9,6 @@ public interface IndicationPagerContract {
 	}
 
 	interface Presenter extends BasePresenter {
-
+		void setIndicationPagerView(View indicationPagerView);
 	}
 }

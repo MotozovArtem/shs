@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import ru.rienel.shs.mobile.R;
 
-public class IndicationsActivity extends AppCompatActivity {
+public class IndicationActivity extends AppCompatActivity {
 
 	private IndicationRootFragment indicationRootFragment;
 	private IndicationPresenter presenter;
