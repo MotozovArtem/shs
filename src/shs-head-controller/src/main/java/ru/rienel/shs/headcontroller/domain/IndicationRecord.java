@@ -5,7 +5,6 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.ToString;
 
 import ru.rienel.shs.headcontroller.domain.converter.UuidConverter;
@@ -20,7 +20,7 @@ import ru.rienel.shs.headcontroller.domain.converter.ZonedDateTimeConverter;
 
 @Entity(name = "IndicationRecord")
 @Table(name = "IndicationRecord")
-@ToString(of={"id", "recordUuid", "value", "recordDate", "device"})
+@ToString(of = {"id", "recordUuid", "value", "recordDate", "device"})
 public class IndicationRecord {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +36,7 @@ public class IndicationRecord {
 
 	@Column(name = "record_date", nullable = false)
 	@Convert(converter = ZonedDateTimeConverter.class)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	private ZonedDateTime recordDate;
 
 	@Column(name = "delta", precision = 10, scale = 3)

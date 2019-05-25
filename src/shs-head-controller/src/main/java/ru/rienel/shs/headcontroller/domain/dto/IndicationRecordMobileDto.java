@@ -3,25 +3,42 @@ package ru.rienel.shs.headcontroller.domain.dto;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.ToString;
-
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ToString(of = {"recordUuid", "value", "recordDate", "device"})
 public class IndicationRecordMobileDto {
 
+	@JsonProperty("id")
+	private Long id;
+
+	@JsonProperty("recordUuid")
 	private UUID recordUuid;
 
+	@JsonProperty("value")
 	private Double value;
 
+	@JsonProperty("recordDate")
 	private ZonedDateTime recordDate;
 
+	@JsonProperty("delta")
 	private Double delta;
 
-	private String device;
+	@JsonProperty("device")
+	private ResourceMeterDto device;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public UUID getRecordUuid() {
 		return recordUuid;
@@ -55,11 +72,11 @@ public class IndicationRecordMobileDto {
 		this.delta = delta;
 	}
 
-	public String getDevice() {
+	public ResourceMeterDto getDevice() {
 		return device;
 	}
 
-	public void setDevice(String device) {
+	public void setDevice(ResourceMeterDto device) {
 		this.device = device;
 	}
 }

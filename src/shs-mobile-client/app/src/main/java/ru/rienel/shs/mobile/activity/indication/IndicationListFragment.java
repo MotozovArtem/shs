@@ -59,6 +59,7 @@ public class IndicationListFragment extends Fragment {
 
 	public void setIndicationPresenter(IndicationContract.Presenter indicationPresenter) {
 		this.indicationPresenter = indicationPresenter;
+		indicationPresenter.addListener(new ResponseListener());
 	}
 
 	private class IndicationAdapter extends RecyclerView.Adapter<IndicationHolder> {
@@ -102,9 +103,9 @@ public class IndicationListFragment extends Fragment {
 		public IndicationHolder(@NonNull View itemView) {
 			super(itemView);
 
-			indicationValue = itemView.findViewById(R.id.indication_list_item_value);
+			indicationValue = itemView.findViewById(R.id.indicationListItemValue);
 			meterLabel = itemView.findViewById(R.id.indication_list_item_meter);
-			resourceTypeImage = itemView.findViewById(R.id.indication_list_item_resource_type);
+			resourceTypeImage = itemView.findViewById(R.id.indicationListItemResourceType);
 		}
 
 		public void bind(IndicationRecord indicationRecord) {
@@ -112,7 +113,7 @@ public class IndicationListFragment extends Fragment {
 
 			indicationValue.setText(String.format(Locale.getDefault(), "%.3f", indicationRecord.getValue()));
 			meterLabel.setText(indicationRecord.getDevice().getSerialNumber());
-
+			resourceTypeImage.setImageResource(getDrawableResource(indicationRecord.getDevice().getType()));
 		}
 
 		private int getDrawableResource(ResourceType resourceType) {
@@ -131,11 +132,13 @@ public class IndicationListFragment extends Fragment {
 		}
 	}
 
-	class IndicationApiApiResponseListener implements IndicationPresenter.IndicationApiResponseListener {
+	class ResponseListener implements IndicationPresenter.IndicationApiResponseListener {
 
 		@Override
 		public void response(IndicationPresenter.IndicationApiResponseEvent event) {
-			// TODO implement
+			List<IndicationRecord> indicationRecordList = event.getIndicationRecordList();
+
+			updateUi(indicationRecordList);
 		}
 	}
 }

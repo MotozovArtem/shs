@@ -53,7 +53,7 @@ public class PersonListFragment extends Fragment {
 
 	public void setPresenter(PersonContract.Presenter presenter) {
 		this.personPresenter = presenter;
-		personPresenter.addListener(new PersonApiResponseListener());
+		personPresenter.addListener(new ResponseListener());
 	}
 
 	private class PersonAdapter extends RecyclerView.Adapter<PersonHolder> {
@@ -108,7 +108,7 @@ public class PersonListFragment extends Fragment {
 		}
 	}
 
-	class PersonApiResponseListener implements PersonPresenter.PersonApiResponseListener {
+	class ResponseListener implements PersonPresenter.PersonApiResponseListener {
 
 		@Override
 		public void response(PersonPresenter.PersonApiResponseEvent event) {

@@ -6,10 +6,23 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.internal.EverythingIsNonNull;
+
+import ru.rienel.shs.mobile.R;
+import ru.rienel.shs.mobile.config.AppConfig;
 import ru.rienel.shs.mobile.domain.IndicationRecord;
+import ru.rienel.shs.mobile.headcontroller.IndicationRecordApi;
 import ru.rienel.shs.mobile.headcontroller.IndicationRecordApiClient;
 
 public class IndicationPresenter implements IndicationContract.Presenter {
+
+	private static final String TAG = IndicationPresenter.class.getName();
 
 	private IndicationContract.View indicationView;
 
@@ -17,8 +30,11 @@ public class IndicationPresenter implements IndicationContract.Presenter {
 
 	private final List<EventListener> listeners = new CopyOnWriteArrayList<>();
 
-	public IndicationPresenter(IndicationContract.View indicationView) {
+	public IndicationPresenter(IndicationContract.View indicationView, SharedPreferences sharedPreferences) {
 		this.indicationView = indicationView;
+		String url = sharedPreferences.getString("pref_hc_address", AppConfig.HEAD_CONTROLLER_URL);
+		String port = sharedPreferences.getString("pref_hc_port", Integer.toString(AppConfig.HEAD_CONTROLLER_PORT));
+		apiClient = IndicationRecordApi.newClient("http://" + url + ":" + port, "aaa");
 	}
 
 	@Override
@@ -28,7 +44,30 @@ public class IndicationPresenter implements IndicationContract.Presenter {
 
 	@Override
 	public void loadData() {
+		Call<List<IndicationRecord>> request = apiClient.getAllIndicationRecords();
+		request.enqueue(new Callback<List<IndicationRecord>>() {
+			@Override
+			@EverythingIsNonNull
+			public void onResponse(Call<List<IndicationRecord>> call, Response<List<IndicationRecord>> response) {
+				if (!response.isSuccessful()) {
+					indicationView.makeShortToastWithText("CODE: " + response.code());
+				} else {
+					List<IndicationRecord> result = response.body();
+					if (result != null) {
+						fireResponse(result);
+					}
+				}
+				indicationView.setRefreshing(false);
+			}
 
+			@Override
+			@EverythingIsNonNull
+			public void onFailure(Call<List<IndicationRecord>> call, Throwable e) {
+				Log.e(TAG, "Exception while requesting:", e);
+				indicationView.makeShortToast(R.string.hcNotAvailable);
+				indicationView.setRefreshing(false);
+			}
+		});
 	}
 
 	@Override
@@ -43,6 +82,19 @@ public class IndicationPresenter implements IndicationContract.Presenter {
 		listeners.remove(listener);
 	}
 
+	private void fireResponse(List<IndicationRecord> indicationRecords) {
+		IndicationApiResponseEvent event = new IndicationApiResponseEvent(this, indicationRecords);
+		for (EventListener listener : listeners) {
+			if (listener instanceof IndicationApiResponseListener) {
+				try {
+					((IndicationApiResponseListener)listener).response(event);
+				} catch (Exception e) {
+					Log.e(TAG, "Listener error:", e);
+				}
+			}
+		}
+	}
+
 	public class IndicationApiResponseEvent extends EventObject {
 		private final List<IndicationRecord> indicationRecordList;
 
@@ -50,7 +102,6 @@ public class IndicationPresenter implements IndicationContract.Presenter {
 			super(source);
 			this.indicationRecordList = indicationRecordList;
 		}
-
 
 		public List<IndicationRecord> getIndicationRecordList() {
 			return indicationRecordList;

@@ -67,7 +67,7 @@ public class IndicationRootFragment extends Fragment implements IndicationContra
 
 	@Override
 	public void onRefresh() {
-
+		indicationPresenter.loadData();
 	}
 
 	@Override
@@ -83,5 +83,10 @@ public class IndicationRootFragment extends Fragment implements IndicationContra
 	@Override
 	public void makeShortToastWithText(String message) {
 		Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void setRefreshing(boolean refreshing) {
+		swipeRefreshLayout.setRefreshing(refreshing);
 	}
 }

@@ -3,23 +3,23 @@
 		xmlns:android="http://schemas.android.com/apk/res/android">
 	<EditTextPreference
 			android:key="pref_hc_address"
-			android:title="@string/pref_hc_address_title"/>
+			android:title="@string/pref_hcAddressTitle"/>
 	<EditTextPreference
 			android:key="pref_hc_port"
-			android:title="@string/pref_hc_port_title"
-			android:defaultValue="@string/pref_hs_port_default"/>
+			android:title="@string/pref_hcPortTitle"
+			android:defaultValue="@string/pref_hcPortDefault"/>
 	<ListPreference
 			android:key="pref_lang"
 			android:title="@string/language"
-			android:summary="@string/pref_lang_summary"
-			android:entries="@array/pref_lang_entries"
-			android:entryValues="@array/pref_lang_values"
-			android:defaultValue="@string/pref_lang_default_value"/>
+			android:summary="@string/pref_langSummary"
+			android:entries="@array/pref_langEntries"
+			android:entryValues="@array/pref_langValues"
+			android:defaultValue="@string/pref_langDefaultValue"/>
 	<Preference
 			android:key="pref_bug_report"
-			android:title="@string/pref_bug_report_title"
-			android:summary="@string/pref_bug_report_summary"/>
+			android:title="@string/pref_bugReportTitle"
+			android:summary="@string/pref_bugReportSummary"/>
 	<Preference
-			android:title="@string/pref_build_number"
+			android:title="@string/pref_buildNumber"
 			android:summary="0.0.1-alpha"/>
 </PreferenceScreen>

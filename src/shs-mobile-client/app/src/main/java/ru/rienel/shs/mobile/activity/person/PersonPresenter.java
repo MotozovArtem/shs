@@ -65,6 +65,7 @@ public class PersonPresenter implements PersonContract.Presenter {
 			@Override
 			@EverythingIsNonNull
 			public void onFailure(Call<List<Person>> call, Throwable e) {
+				Log.e(TAG, "Exception while requesting:", e);
 				personRootView.makeShortToast(R.string.hcNotAvailable);
 				personRootView.setRefreshing(false);
 			}
@@ -114,31 +115,4 @@ public class PersonPresenter implements PersonContract.Presenter {
 		void response(PersonApiResponseEvent event);
 
 	}
-
-	/*
-	*	class ScanListener implements FlightImageScanner.FlightImageListener {
-		private final UsbDevice device;
-
-		public ScanListener(UsbDevice device) {
-			Objects.requireNonNull(device);
-			this.device = device;
-		}
-
-		@Override
-		public void scanCompleted(FlightImageScanner.ScanEvent event) {
-			devicesModel.scanCompleted(device);
-			uploadController.submitCurrentProjects();
-		}
-
-		@Override
-		public void scanTerminated(FlightImageScanner.ScanEvent event) {
-			devicesModel.scanTerminated(device);
-		}
-
-		@Override
-		public void flightImageFound(FlightImageScanner.FlightImageEvent event) {
-			projectsModel.addFlightImage(event.getImagePath(), event.getFlightId());
-		}
-	}
-	 */
 }

@@ -1,6 +1,7 @@
 package ru.rienel.shs.mobile.activity.indication;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -18,14 +19,16 @@ public class IndicationsActivity extends AppCompatActivity {
 		setContentView(R.layout.indication_activity);
 
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		indicationRootFragment = (IndicationRootFragment)fragmentManager.findFragmentById(R.id.indicationRootFragmentContainer);
+		indicationRootFragment =
+				(IndicationRootFragment)fragmentManager.findFragmentById(R.id.indicationRootFragmentContainer);
 		if (indicationRootFragment == null) {
 			indicationRootFragment = IndicationRootFragment.getInstance();
 			fragmentManager.beginTransaction()
 					.add(R.id.indicationRootFragmentContainer, indicationRootFragment)
 					.commit();
 		}
-		presenter = new IndicationPresenter(indicationRootFragment);
+		presenter = new IndicationPresenter(indicationRootFragment,
+				PreferenceManager.getDefaultSharedPreferences(this));
 		indicationRootFragment.setPresenter(presenter);
 	}
 

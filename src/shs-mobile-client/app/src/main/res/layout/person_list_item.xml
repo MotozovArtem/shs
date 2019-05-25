@@ -4,19 +4,19 @@
 				android:layout_height="match_parent">
 	<TextView
 			android:id="@+id/person_list_item_surname"
-			android:text="@string/test_text"
+			android:text="@string/testText"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"/>
 	<TextView
 			android:id="@+id/person_list_item_name"
-			android:text="@string/test_text"
+			android:text="@string/testText"
 			android:layout_toEndOf="@id/person_list_item_surname"
 			android:layout_marginStart="20dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"/>
 	<TextView
 			android:id="@+id/person_list_item_patronymic"
-			android:text="@string/test_text"
+			android:text="@string/testText"
 			android:layout_toEndOf="@id/person_list_item_name"
 			android:layout_marginStart="10dp"
 			android:layout_width="wrap_content"

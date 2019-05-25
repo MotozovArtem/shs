@@ -16,17 +16,18 @@ public class PersonApi {
 	private static final String TAG = PersonApi.class.getName();
 
 	private PersonApi() {
+		// do nothing
 	}
 
 	public static PersonApiClient newClient(String url, String authorizationToken) {
-		OkHttpClient client = new OkHttpClient.Builder()
+		final OkHttpClient client = new OkHttpClient.Builder()
 				.addInterceptor(new PersonApiInterceptor(authorizationToken))
 				.build();
 
 		return new Retrofit.Builder()
+				.client(client)
 				.baseUrl(url)
 				.addConverterFactory(JacksonConverterFactory.create())
-				.client(client)
 				.build()
 				.create(PersonApiClient.class);
 	}

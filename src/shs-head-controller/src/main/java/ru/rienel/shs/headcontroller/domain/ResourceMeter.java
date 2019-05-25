@@ -17,6 +17,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.ToString;
 
 import ru.rienel.shs.headcontroller.domain.converter.ZonedDateTimeConverter;
@@ -37,11 +38,13 @@ public class ResourceMeter {
 	@Enumerated(EnumType.STRING)
 	private ResourceType type;
 
+	// TODO Create verification converter
 	@Column(name = "verification")
 	private Stack<ZonedDateTime> verification;
 
 	@Column(name = "added_time")
 	@Convert(converter = ZonedDateTimeConverter.class)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	private ZonedDateTime addedTime;
 
 	@OneToMany(fetch = FetchType.EAGER)

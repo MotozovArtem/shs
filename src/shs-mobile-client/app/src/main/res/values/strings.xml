@@ -1,11 +1,11 @@
 <resources>
-	<string name="app_name" translatable="false">SHS</string>
+	<string name="appName" translatable="false">SHS</string>
 	<string name="applicationTitle">SHS Mobile Client</string>
 	<string name="empty" translatable="false"/>
 	<string name="OK">OK</string>
 	<string name="cancel">Cancel</string>
 	<string name="accept">Accept</string>
-	<string name="test_text">Test text</string>
+	<string name="testText">Test text</string>
 	<string name="open">Open</string>
 	<string name="close">Close</string>
 	<string name="dashboard">Dashboard</string>
@@ -15,25 +15,25 @@
 	<string name="meters">Meters</string>
 	<string name="settings">Settings</string>
 	<string name="hcNotAvailable">Head controller not available. Check connection</string>
-	<string name="pref_bug_report_title">Send bug report or suggests</string>
-	<string name="pref_bug_report_summary">Report technical issues or suggest new features</string>
-	<string name="pref_hc_address_title">Edit Head Controller IP address</string>
-	<string name="pref_build_number">Build number</string>
+	<string name="pref_bugReportTitle">Send bug report or suggests</string>
+	<string name="pref_bugReportSummary">Report technical issues or suggest new features</string>
+	<string name="pref_hcAddressTitle">Edit Head Controller IP address</string>
+	<string name="pref_buildNumber">Build number</string>
 	<string name="language">Language</string>
-	<string name="pref_lang_summary">Select language</string>
-
-	<string-array name="pref_lang_entries">
-		<item>English</item>
-		<item>Русский</item>
-	</string-array>
-
-	<string-array name="pref_lang_values">
-		<item>English</item>
-		<item>Русский</item>
-	</string-array>
-
-	<string name="pref_lang_default_value" translatable="false">English</string>
-	<string name="pref_hc_port_title">Edit Head Controller port</string>
-	<string name="pref_hs_port_default" translatable="false">8080</string>
 	<string name="meter">Meter:</string>
+	<string name="pref_langSummary">Select language</string>
+
+	<string-array name="pref_langEntries">
+		<item>English</item>
+		<item>Русский</item>
+	</string-array>
+
+	<string-array name="pref_langValues">
+		<item>English</item>
+		<item>Русский</item>
+	</string-array>
+
+	<string name="pref_langDefaultValue" translatable="false">English</string>
+	<string name="pref_hcPortTitle">Edit Head Controller port</string>
+	<string name="pref_hcPortDefault" translatable="false">8080</string>
 </resources>

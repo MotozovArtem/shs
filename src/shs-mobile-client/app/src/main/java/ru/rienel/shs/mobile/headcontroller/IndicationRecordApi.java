@@ -14,21 +14,21 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class IndicationRecordApi {
 	private static final String TAG = IndicationRecordApi.class.getName();
 
+	private IndicationRecordApi() {
+		// Do nothing
+	}
+
 	public static IndicationRecordApiClient newClient(String url, String authorizationToken) {
-		final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+		final OkHttpClient client = new OkHttpClient.Builder()
 				.addInterceptor(new IndicationRecordInterceptor(authorizationToken))
 				.build();
 
 		return new Retrofit.Builder()
-				.client(okHttpClient)
+				.client(client)
 				.baseUrl(url)
 				.addConverterFactory(JacksonConverterFactory.create())
 				.build()
 				.create(IndicationRecordApiClient.class);
-	}
-
-	private IndicationRecordApi() {
-		// Do nothing
 	}
 
 	private static class IndicationRecordInterceptor implements Interceptor {

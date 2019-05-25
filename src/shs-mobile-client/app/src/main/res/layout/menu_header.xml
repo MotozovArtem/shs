@@ -7,7 +7,7 @@
 
 	<ImageView
 			android:src="@drawable/ic_launcher_background"
-			android:id="@+id/menu_user_icon"
+			android:id="@+id/menuUserIcon"
 			android:layout_width="75dp"
 			android:layout_height="75dp"/>
 
@@ -15,17 +15,17 @@
 			android:id="@+id/menu_username"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_toEndOf="@+id/menu_user_icon"
+			android:layout_toEndOf="@+id/menuUserIcon"
 			android:textColor="@color/white"
-			android:text="@string/test_text"/>
+			android:text="@string/testText"/>
 
 	<TextView
 			android:id="@+id/menu_address"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_toEndOf="@id/menu_user_icon"
+			android:layout_toEndOf="@id/menuUserIcon"
 			android:layout_below="@+id/menu_username"
-			android:text="@string/test_text"
+			android:text="@string/testText"
 			android:textColor="@color/white"/>
 
 </RelativeLayout>

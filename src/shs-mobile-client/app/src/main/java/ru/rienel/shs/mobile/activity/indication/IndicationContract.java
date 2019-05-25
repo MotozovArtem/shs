@@ -8,6 +8,7 @@ import ru.rienel.shs.mobile.util.Toastable;
 public interface IndicationContract {
 	interface View extends BaseView<Presenter>, Toastable {
 
+		void setRefreshing(boolean refreshing);
 	}
 
 	interface Presenter extends BasePresenter, HaveListeners {
