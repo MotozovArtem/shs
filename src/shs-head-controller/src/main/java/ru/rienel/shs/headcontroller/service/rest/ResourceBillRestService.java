@@ -43,8 +43,8 @@ public class ResourceBillRestService {
 	}
 
 	@PostMapping("/{serialNumber}")
-	public Boolean updateResourceBill(@RequestBody ResourceBill resourceBill) {
-		ResourceBill bill = resourceBillRepository.findBySerialNumber(resourceBill.getSerialNumber());
+	public Boolean updateResourceBill(@PathVariable("serialNumber") String serialNumber, @RequestBody ResourceBill resourceBill) {
+		ResourceBill bill = resourceBillRepository.findBySerialNumber(serialNumber);
 		bill.setCostPerUnit(resourceBill.getCostPerUnit());
 		bill.setLastIndication(resourceBill.getLastIndication());
 		bill.setPerson(resourceBill.getPerson());
