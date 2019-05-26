@@ -30,4 +30,6 @@
 	<string name="value">Значение:</string>
 	<string name="date">Дата:</string>
 	<string name="type">Тип:</string>
+	<string name="testUserName">Артем</string>
+	<string name="testUserSurname">Мотозов</string>
 </resources>

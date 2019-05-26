@@ -10,6 +10,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.internal.EverythingIsNonNull;
 
 public class IndicationRecordApi {
 	private static final String TAG = IndicationRecordApi.class.getName();

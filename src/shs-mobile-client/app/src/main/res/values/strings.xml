@@ -44,4 +44,6 @@
 	<string name="pref_hcPortTitle">Edit Head Controller port</string>
 	<string name="pref_hcPortDefault" translatable="false">8080</string>
 
+	<string name="testUserName">Artyom</string>
+	<string name="testUserSurname">Motozov</string>
 </resources>
