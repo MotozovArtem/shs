@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString(of = {"id", "recordUuid", "recordDate"})
 public class IndicationRecord {
 
-	@DatabaseField(columnName = "id")
+	@DatabaseField(columnName = "id", id = true)
 	private Long id;
 
 	@DatabaseField(columnName = "record_uuid", dataType = DataType.UUID, canBeNull = false)
@@ -24,7 +24,7 @@ public class IndicationRecord {
 	@DatabaseField(columnName = "record_date", dataType = DataType.DATE)
 	private Date recordDate;
 
-	@DatabaseField(columnName = "device", foreign = true, canBeNull = false)
+	@DatabaseField(columnName = "device", foreign = true, canBeNull = false, foreignAutoRefresh = true)
 	private ResourceMeter device;
 
 	@DatabaseField(columnName = "delta")

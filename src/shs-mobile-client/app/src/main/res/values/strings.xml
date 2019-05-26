@@ -20,7 +20,14 @@
 	<string name="pref_hcAddressTitle">Edit Head Controller IP address</string>
 	<string name="pref_buildNumber">Build number</string>
 	<string name="language">Language</string>
+	<string name="hotWater">Hot water</string>
+	<string name="coldWater">Cold water</string>
+	<string name="gas">Gas</string>
+	<string name="electricity">Electricity</string>
+	<string name="value">Value:</string>
+	<string name="date">Date:</string>
 	<string name="meter">Meter:</string>
+	<string name="type">Type:</string>
 	<string name="pref_langSummary">Select language</string>
 
 	<string-array name="pref_langEntries">
@@ -36,4 +43,5 @@
 	<string name="pref_langDefaultValue" translatable="false">English</string>
 	<string name="pref_hcPortTitle">Edit Head Controller port</string>
 	<string name="pref_hcPortDefault" translatable="false">8080</string>
+
 </resources>

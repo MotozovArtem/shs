@@ -1,8 +1,7 @@
 package ru.rienel.shs.mobile.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Stack;
 
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
@@ -13,7 +12,7 @@ import lombok.ToString;
 @ToString(of = {"id", "serialNumber", "type"})
 public class ResourceMeter {
 
-	@DatabaseField(columnName = "id", generatedId = true)
+	@DatabaseField(columnName = "id", id = true)
 	private Long id;
 
 	@DatabaseField(columnName = "serial_number", canBeNull = false)
@@ -22,14 +21,14 @@ public class ResourceMeter {
 	@DatabaseField(columnName = "type", canBeNull = false, dataType = DataType.ENUM_STRING)
 	private ResourceType type;
 
-	@DatabaseField(columnName = "verification")
-	private List<Date> verification;
+	@DatabaseField(columnName = "verification", dataType = DataType.SERIALIZABLE)
+	private ArrayList<Date> verification;
 
 	@DatabaseField(columnName = "added_time", dataType = DataType.DATE)
 	private Date addedTime;
 
-	@DatabaseField(columnName = "neighbors")
-	private List<ResourceMeter> neighbors;
+	@DatabaseField(columnName = "neighbors", dataType = DataType.SERIALIZABLE)
+	private ArrayList<ResourceMeter> neighbors;
 
 	public ResourceMeter() {
 	}
@@ -58,11 +57,11 @@ public class ResourceMeter {
 		this.type = type;
 	}
 
-	public List<Date> getVerification() {
+	public ArrayList<Date> getVerification() {
 		return verification;
 	}
 
-	public void setVerification(List<Date> verification) {
+	public void setVerification(ArrayList<Date> verification) {
 		this.verification = verification;
 	}
 
@@ -74,11 +73,11 @@ public class ResourceMeter {
 		this.addedTime = addedTime;
 	}
 
-	public List<ResourceMeter> getNeighbors() {
+	public ArrayList<ResourceMeter> getNeighbors() {
 		return neighbors;
 	}
 
-	public void setNeighbors(List<ResourceMeter> neighbors) {
+	public void setNeighbors(ArrayList<ResourceMeter> neighbors) {
 		this.neighbors = neighbors;
 	}
 }

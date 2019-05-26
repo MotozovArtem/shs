@@ -2,7 +2,6 @@ package ru.rienel.shs.mobile.domain.dto;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Stack;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;

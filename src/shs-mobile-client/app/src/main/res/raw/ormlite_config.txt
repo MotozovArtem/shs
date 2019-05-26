@@ -1,5 +1,5 @@
 #
-# generated on 2019/05/24 10:38:36
+# generated on 2019/05/26 10:26:08
 #
 # --table-start--
 dataClass=ru.rienel.shs.mobile.domain.User
@@ -8,7 +8,7 @@ tableName=User
 # --field-start--
 fieldName=id
 columnName=id
-generatedId=true
+id=true
 # --field-end--
 # --field-start--
 fieldName=username
@@ -22,6 +22,8 @@ columnName=password
 fieldName=person
 columnName=person
 foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -32,24 +34,29 @@ tableName=Person
 # --table-fields-start--
 # --field-start--
 fieldName=id
-generatedId=true
+columnName=id
+id=true
 # --field-end--
 # --field-start--
 fieldName=name
+columnName=name
 width=100
 canBeNull=false
 # --field-end--
 # --field-start--
 fieldName=surname
+columnName=surname
 width=100
 canBeNull=false
 # --field-end--
 # --field-start--
 fieldName=patronymic
+columnName=patronymic
 width=100
 # --field-end--
 # --field-start--
 fieldName=address
+columnName=address
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -61,7 +68,7 @@ tableName=ResourceBill
 # --field-start--
 fieldName=id
 columnName=id
-generatedId=true
+id=true
 # --field-end--
 # --field-start--
 fieldName=serialNumber
@@ -81,11 +88,15 @@ columnName=summary
 fieldName=person
 columnName=person
 foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
 # --field-end--
 # --field-start--
 fieldName=lastIndication
 columnName=last_indication
 foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -97,7 +108,7 @@ tableName=ResourceMeter
 # --field-start--
 fieldName=id
 columnName=id
-generatedId=true
+id=true
 # --field-end--
 # --field-start--
 fieldName=serialNumber
@@ -113,6 +124,7 @@ canBeNull=false
 # --field-start--
 fieldName=verification
 columnName=verification
+dataPersister=SERIALIZABLE
 # --field-end--
 # --field-start--
 fieldName=addedTime
@@ -122,6 +134,7 @@ dataPersister=DATE
 # --field-start--
 fieldName=neighbors
 columnName=neighbors
+dataPersister=SERIALIZABLE
 # --field-end--
 # --table-fields-end--
 # --table-end--
@@ -133,7 +146,7 @@ tableName=IndicationRecord
 # --field-start--
 fieldName=id
 columnName=id
-generatedId=true
+id=true
 # --field-end--
 # --field-start--
 fieldName=recordUuid
@@ -156,6 +169,8 @@ fieldName=device
 columnName=device
 canBeNull=false
 foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
 # --field-end--
 # --field-start--
 fieldName=delta

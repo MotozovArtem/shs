@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/indicationItem"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent">
 	<TextView
@@ -9,31 +10,50 @@
 
 	<TextView
 			android:id="@+id/indicationItemDateLabel"
+			android:text="@string/date"
+			android:layout_below="@id/indicationItemValue"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"/>
 
 	<TextView
 			android:id="@+id/indicationItemDate"
+			android:layout_below="@id/indicationItemValue"
+			android:layout_toEndOf="@id/indicationItemDateLabel"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"/>
 
 	<TextView
 			android:id="@+id/indicationItemMeterLabel"
+			android:layout_below="@id/indicationItemDateLabel"
+			android:text="@string/meter"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"/>
 
 	<TextView
 			android:id="@+id/indicationItemMeter"
+			android:layout_below="@id/indicationItemDateLabel"
+			android:layout_toEndOf="@id/indicationItemMeterLabel"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"/>
 
 	<TextView
 			android:id="@+id/indicationItemTypeLabel"
+			android:layout_below="@id/indicationItemMeterLabel"
+			android:text="@string/type"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"/>
 
+	<ImageView
+			android:id="@+id/indicationItemTypeIcon"
+			android:layout_toEndOf="@id/indicationItemTypeLabel"
+			android:layout_below="@id/indicationItemMeterLabel"
+			android:layout_width="64dp"
+			android:layout_height="64dp"/>
+
 	<TextView
 			android:id="@+id/indicationItemType"
+			android:layout_below="@id/indicationItemMeterLabel"
+			android:layout_toEndOf="@id/indicationItemTypeIcon"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"/>
 

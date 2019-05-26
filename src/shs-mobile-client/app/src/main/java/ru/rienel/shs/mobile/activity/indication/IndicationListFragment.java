@@ -2,7 +2,6 @@ package ru.rienel.shs.mobile.activity.indication;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +20,7 @@ import ru.rienel.shs.mobile.R;
 import ru.rienel.shs.mobile.activity.indication.pager.IndicationPagerActivity;
 import ru.rienel.shs.mobile.domain.IndicationRecord;
 import ru.rienel.shs.mobile.domain.ResourceType;
+import ru.rienel.shs.mobile.util.Formatters;
 
 public class IndicationListFragment extends Fragment {
 
@@ -104,6 +104,7 @@ public class IndicationListFragment extends Fragment {
 
 		public IndicationHolder(@NonNull View itemView) {
 			super(itemView);
+			itemView.setOnClickListener(this);
 
 			indicationValue = itemView.findViewById(R.id.indicationListItemValue);
 			meterLabel = itemView.findViewById(R.id.indication_list_item_meter);
@@ -113,7 +114,7 @@ public class IndicationListFragment extends Fragment {
 		public void bind(IndicationRecord indicationRecord) {
 			this.indicationRecord = indicationRecord;
 
-			indicationValue.setText(String.format(Locale.getDefault(), "%.3f", indicationRecord.getValue()));
+			indicationValue.setText(Formatters.formatResourceMeterValue(indicationRecord.getValue()));
 			meterLabel.setText(indicationRecord.getDevice().getSerialNumber());
 			resourceTypeImage.setImageResource(getDrawableResource(indicationRecord.getDevice().getType()));
 		}

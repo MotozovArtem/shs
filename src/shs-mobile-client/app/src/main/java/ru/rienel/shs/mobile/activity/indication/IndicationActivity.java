@@ -7,16 +7,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import ru.rienel.shs.mobile.R;
+import ru.rienel.shs.mobile.db.DatabaseHelper;
 
 public class IndicationActivity extends AppCompatActivity {
 
+	private static final String TAG = IndicationActivity.class.getName();
+
 	private IndicationRootFragment indicationRootFragment;
+
 	private IndicationPresenter presenter;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.indication_activity);
+		DatabaseHelper dbHelper = new DatabaseHelper(this);
 
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		indicationRootFragment =
@@ -28,7 +33,8 @@ public class IndicationActivity extends AppCompatActivity {
 					.commit();
 		}
 		presenter = new IndicationPresenter(indicationRootFragment,
-				PreferenceManager.getDefaultSharedPreferences(this));
+				PreferenceManager.getDefaultSharedPreferences(this),
+				dbHelper);
 		indicationRootFragment.setPresenter(presenter);
 	}
 

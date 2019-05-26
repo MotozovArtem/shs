@@ -8,7 +8,7 @@ import lombok.ToString;
 @ToString(of = {"id", "serialNumber", "summary"})
 public class ResourceBill {
 
-	@DatabaseField(columnName = "id", generatedId = true)
+	@DatabaseField(columnName = "id", id = true)
 	private Long id;
 
 	@DatabaseField(columnName = "serial_number", canBeNull = false, width = 100)
@@ -20,10 +20,10 @@ public class ResourceBill {
 	@DatabaseField(columnName = "summary")
 	private Double summary;
 
-	@DatabaseField(columnName = "person", foreign = true)
+	@DatabaseField(columnName = "person", foreign = true, foreignAutoRefresh = true)
 	private Person person;
 
-	@DatabaseField(columnName = "last_indication", foreign = true)
+	@DatabaseField(columnName = "last_indication", foreign = true, foreignAutoRefresh = true)
 	private IndicationRecord lastIndication;
 
 	public ResourceBill() {

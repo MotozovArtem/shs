@@ -8,7 +8,7 @@ import lombok.ToString;
 @ToString(of = {"id", "username", "person"})
 public class User {
 
-	@DatabaseField(columnName = "id", generatedId = true)
+	@DatabaseField(columnName = "id", id = true)
 	private Long id;
 
 	@DatabaseField(columnName = "username")
@@ -17,7 +17,7 @@ public class User {
 	@DatabaseField(columnName = "password")
 	private String password;
 
-	@DatabaseField(columnName = "person", foreign = true)
+	@DatabaseField(columnName = "person", foreign = true, foreignAutoRefresh = true)
 	private Person person;
 
 	public User() {

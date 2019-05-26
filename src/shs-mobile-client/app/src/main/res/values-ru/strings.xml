@@ -23,4 +23,11 @@
 	<string name="pref_bugReportTitle">Отправить отчет об ошибке или предложение</string>
 	<string name="pref_hcPortTitle">Изменить порт Головного Контроллера</string>
 	<string name="meter">Счетчик:</string>
+	<string name="hotWater">Гор. вода</string>
+	<string name="coldWater">Хол. вода</string>
+	<string name="gas">Газ</string>
+	<string name="electricity">Электричество</string>
+	<string name="value">Значение:</string>
+	<string name="date">Дата:</string>
+	<string name="type">Тип:</string>
 </resources>
