@@ -36,7 +36,7 @@ public class ResourceBillRestService {
 		return resourceBillRepository.findBySerialNumber(serialNumber);
 	}
 
-	@PutMapping("/add")
+	@PutMapping("/")
 	public Boolean addResourceBill(@RequestBody ResourceBill resourceBill) {
 		resourceBillRepository.save(resourceBill);
 		return true;

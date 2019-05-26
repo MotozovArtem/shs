@@ -38,8 +38,9 @@ public class ResourceMeterRestService {
 	}
 
 	@PutMapping("/")
-	public ResourceMeter addMeters(@RequestBody ResourceMeter resourceMeter) {
-		return resourceMeterRepository.save(resourceMeter);
+	public Boolean addMeters(@RequestBody ResourceMeter resourceMeter) {
+		resourceMeterRepository.save(resourceMeter);
+		return true;
 	}
 
 	@PostMapping("/{serialNumber}")
