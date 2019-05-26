@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import ru.rienel.shs.mobile.R;
 
 public class PersonActivity extends AppCompatActivity {
+
 	private static final String TAG = PersonActivity.class.getName();
 
 	private PersonRootFragment personRootFragment;
+
 	private PersonPresenter personPresenter;
 
 	@Override
@@ -26,7 +28,8 @@ public class PersonActivity extends AppCompatActivity {
 					.add(R.id.personRootFragmentContainer, personRootFragment)
 					.commit();
 		}
-		personPresenter = new PersonPresenter(personRootFragment, PreferenceManager.getDefaultSharedPreferences(this));
+		personPresenter = new PersonPresenter(personRootFragment,
+				PreferenceManager.getDefaultSharedPreferences(this));
 
 		personRootFragment.setPresenter(personPresenter);
 	}

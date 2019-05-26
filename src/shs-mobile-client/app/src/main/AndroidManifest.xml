@@ -55,6 +55,7 @@
 				android:name=".activity.indication.pager.IndicationPagerActivity"
 				android:label="@string/indications">
 		</activity>
+		<activity android:name=".activity.meter.MeterFragment"/>
 	</application>
 
 </manifest>

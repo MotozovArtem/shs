@@ -5,10 +5,11 @@ import ru.rienel.shs.mobile.activity.BaseView;
 
 public interface MeterContract {
 	interface View extends BaseView<Presenter> {
-
+		void setRefreshing(boolean refreshing);
 	}
 
 	interface Presenter extends BasePresenter {
 
+		void loadData();
 	}
 }
