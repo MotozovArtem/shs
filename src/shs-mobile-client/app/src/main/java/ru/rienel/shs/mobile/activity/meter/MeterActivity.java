@@ -1,6 +1,7 @@
 package ru.rienel.shs.mobile.activity.meter;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
@@ -27,7 +28,8 @@ public class MeterActivity extends AppCompatActivity {
 					.commit();
 		}
 		DatabaseHelper dbHelper = new DatabaseHelper(this);
-		resourceMeterPresenter = new MeterPresenter(dbHelper, meterRootFragment);
+		resourceMeterPresenter = new MeterPresenter(dbHelper, meterRootFragment,
+				PreferenceManager.getDefaultSharedPreferences(this));
 		meterRootFragment.setPresenter(resourceMeterPresenter);
 	}
 }

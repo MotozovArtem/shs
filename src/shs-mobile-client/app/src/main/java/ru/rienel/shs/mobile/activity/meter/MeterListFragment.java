@@ -11,9 +11,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import ru.rienel.shs.mobile.R;
 import ru.rienel.shs.mobile.domain.ResourceMeter;
+import ru.rienel.shs.mobile.domain.ResourceType;
+import ru.rienel.shs.mobile.util.Formatters;
 
 public class MeterListFragment extends Fragment {
 
@@ -27,7 +31,7 @@ public class MeterListFragment extends Fragment {
 
 	public static MeterListFragment getInstance(MeterContract.Presenter resourceMeterPresenter) {
 		MeterListFragment fragment = new MeterListFragment();
-		fragment.resourceMeterPresenter = resourceMeterPresenter;
+		fragment.setPresenter(resourceMeterPresenter);
 		return fragment;
 	}
 
@@ -54,6 +58,7 @@ public class MeterListFragment extends Fragment {
 
 	public void setPresenter(MeterContract.Presenter presenter) {
 		this.resourceMeterPresenter = presenter;
+		presenter.addListener(new ResponseListener());
 	}
 
 	class MeterAdapter extends RecyclerView.Adapter<MeterHolder> {
@@ -91,13 +96,40 @@ public class MeterListFragment extends Fragment {
 
 		private ResourceMeter resourceMeter;
 
+		private TextView serialNumber;
+
+		private TextView added;
+
+		private ImageView resourceType;
+
 		public MeterHolder(@NonNull View itemView) {
 			super(itemView);
 			itemView.setOnClickListener(this);
+			serialNumber = itemView.findViewById(R.id.resourceMeterItemSerialNumber);
+			added = itemView.findViewById(R.id.resourceMeterItemAdded);
+			resourceType = itemView.findViewById(R.id.resourceMeterItemType);
 		}
 
 		public void bind(ResourceMeter resourceMeter) {
+			this.resourceMeter = resourceMeter;
+			serialNumber.setText(resourceMeter.getSerialNumber());
+			added.setText(Formatters.formatDate(resourceMeter.getAddedTime()));
+			resourceType.setImageResource(getDrawableResource(resourceMeter.getType()));
+		}
 
+		private int getDrawableResource(ResourceType resourceType) {
+			switch (resourceType) {
+				case ELECTRICITY:
+					return R.drawable.flash64;
+				case GAS:
+					return R.drawable.gas64;
+				case HOT_WATER:
+					return R.drawable.hot_water64;
+				case COLD_WATER:
+					return R.drawable.cold_water64;
+				default:
+					return R.drawable.app_icon;
+			}
 		}
 
 		@Override

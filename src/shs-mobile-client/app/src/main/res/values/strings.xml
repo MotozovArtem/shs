@@ -28,6 +28,8 @@
 	<string name="date">Date:</string>
 	<string name="meter">Meter:</string>
 	<string name="type">Type:</string>
+	<string name="serialNumber">Serial Number:</string>
+
 	<string name="pref_langSummary">Select language</string>
 
 	<string-array name="pref_langEntries">
@@ -46,4 +48,5 @@
 
 	<string name="testUserName">Artyom</string>
 	<string name="testUserSurname">Motozov</string>
+	<string name="added">Added:</string>
 </resources>

@@ -7,15 +7,23 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.j256.ormlite.dao.Dao;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.internal.EverythingIsNonNull;
 
+import ru.rienel.shs.mobile.R;
+import ru.rienel.shs.mobile.config.AppConfig;
 import ru.rienel.shs.mobile.db.DatabaseHelper;
 import ru.rienel.shs.mobile.domain.ResourceMeter;
-import ru.rienel.shs.mobile.util.HaveListeners;
+import ru.rienel.shs.mobile.headcontroller.ResourceMeterApi;
+import ru.rienel.shs.mobile.headcontroller.ResourceMeterApiClient;
 
-public class MeterPresenter implements MeterContract.Presenter, HaveListeners {
+public class MeterPresenter implements MeterContract.Presenter {
 
 	private static final String TAG = MeterPresenter.class.getName();
 
@@ -25,9 +33,11 @@ public class MeterPresenter implements MeterContract.Presenter, HaveListeners {
 
 	private MeterContract.View resourceMeterView;
 
+	private ResourceMeterApiClient apiClient;
+
 	private List<EventListener> listeners = new CopyOnWriteArrayList<>();
 
-	public MeterPresenter(DatabaseHelper dbHelper, MeterContract.View resourceMeterView) {
+	public MeterPresenter(DatabaseHelper dbHelper, MeterContract.View resourceMeterView, SharedPreferences sharedPreferences) {
 		this.dbHelper = dbHelper;
 		try {
 			resourceMeterRepository = dbHelper.getResourceMeterDao();
@@ -35,11 +45,48 @@ public class MeterPresenter implements MeterContract.Presenter, HaveListeners {
 			Log.e(TAG, "Cannot instantiate Resource Meter repository", e);
 		}
 		this.resourceMeterView = resourceMeterView;
+		String url = sharedPreferences.getString("pref_hc_address", AppConfig.HEAD_CONTROLLER_URL);
+		String port = sharedPreferences.getString("pref_hc_port", Integer.toString(AppConfig.HEAD_CONTROLLER_PORT));
+		this.apiClient = ResourceMeterApi.newClient("http://" + url + ":" + port, "aaa");
 	}
 
 	@Override
 	public void loadData() {
+		Call<List<ResourceMeter>> request = apiClient.getAllResourceMeters();
+		request.enqueue(new Callback<List<ResourceMeter>>() {
+			@Override
+			@EverythingIsNonNull
+			public void onResponse(Call<List<ResourceMeter>> call, Response<List<ResourceMeter>> response) {
+				if (!response.isSuccessful()) {
+					resourceMeterView.makeShortToastWithText("CODE: " + response.code());
+				} else {
+					List<ResourceMeter> result = response.body();
+					if (result != null) {
+						fireResponse(result);
+						saveResponse(result);
+					}
+				}
+				resourceMeterView.setRefreshing(false);
+			}
 
+			@Override
+			@EverythingIsNonNull
+			public void onFailure(Call<List<ResourceMeter>> call, Throwable e) {
+				Log.e(TAG, "Exception while requesting", e);
+				resourceMeterView.makeShortToast(R.string.hcNotAvailable);
+				resourceMeterView.setRefreshing(false);
+			}
+		});
+	}
+
+	private void saveResponse(List<ResourceMeter> resourceMeterList) {
+		for (ResourceMeter resourceMeter : resourceMeterList) {
+			try {
+				resourceMeterRepository.createOrUpdate(resourceMeter);
+			} catch (SQLException e) {
+				Log.e(TAG, "Cannot save ResourceMeter object to Database", e);
+			}
+		}
 	}
 
 	@Override

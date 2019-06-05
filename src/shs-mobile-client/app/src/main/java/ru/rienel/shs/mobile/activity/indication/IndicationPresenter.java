@@ -98,7 +98,6 @@ public class IndicationPresenter implements IndicationContract.Presenter {
 				Log.e(TAG, "Cannot save indication record", e);
 			}
 		}
-
 	}
 
 	@Override

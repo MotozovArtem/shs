@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
 
+	<TextView
+			android:id="@+id/resourceMeterItemSerialNumberLabel"
+			android:text="@string/serialNumber"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<TextView
+			android:id="@+id/resourceMeterItemSerialNumber"
+			android:layout_toEndOf="@id/resourceMeterItemSerialNumberLabel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<TextView
+			android:id="@+id/resourceMeterItemAddedLabel"
+			android:layout_below="@id/resourceMeterItemSerialNumberLabel"
+			android:text="@string/added"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<TextView
+			android:id="@+id/resourceMeterItemAdded"
+			android:layout_below="@id/resourceMeterItemSerialNumber"
+			android:layout_toEndOf="@id/resourceMeterItemAddedLabel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<ImageView
+			android:id="@+id/resourceMeterItemType"
+			android:layout_alignParentEnd="true"
+			android:layout_width="64dp"
+			android:layout_height="64dp"/>
 </RelativeLayout>

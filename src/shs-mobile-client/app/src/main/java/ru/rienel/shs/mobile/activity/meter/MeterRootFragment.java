@@ -13,9 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import ru.rienel.shs.mobile.R;
-import ru.rienel.shs.mobile.util.Toastable;
 
-public class MeterRootFragment extends Fragment implements MeterContract.View, SwipeRefreshLayout.OnRefreshListener, Toastable {
+public class MeterRootFragment extends Fragment implements MeterContract.View, SwipeRefreshLayout.OnRefreshListener {
 
 	private static final String TAG = MeterRootFragment.class.getName();
 
