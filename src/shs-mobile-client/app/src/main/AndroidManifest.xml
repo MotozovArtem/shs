@@ -33,6 +33,7 @@
 		</activity>
 		<activity
 				android:name=".activity.meter.MeterActivity"
+				android:theme="@style/AppTheme.NoActionBar"
 				android:label="@string/meters">
 		</activity>
 		<activity

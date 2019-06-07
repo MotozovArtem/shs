@@ -1,4 +1,20 @@
 <resources>
+	<string name="pref_langSummary">Select language</string>
+
+	<string-array name="pref_langEntries">
+		<item>English</item>
+		<item>Русский</item>
+	</string-array>
+
+	<string-array name="pref_langValues">
+		<item>English</item>
+		<item>Русский</item>
+	</string-array>
+
+	<string name="pref_langDefaultValue" translatable="false">English</string>
+	<string name="pref_hcPortTitle">Edit Head Controller port</string>
+	<string name="pref_hcPortDefault" translatable="false">8080</string>
+
 	<string name="appName" translatable="false">SHS</string>
 	<string name="applicationTitle">SHS Mobile Client</string>
 	<string name="empty" translatable="false"/>
@@ -29,24 +45,11 @@
 	<string name="meter">Meter:</string>
 	<string name="type">Type:</string>
 	<string name="serialNumber">Serial Number:</string>
-
-	<string name="pref_langSummary">Select language</string>
-
-	<string-array name="pref_langEntries">
-		<item>English</item>
-		<item>Русский</item>
-	</string-array>
-
-	<string-array name="pref_langValues">
-		<item>English</item>
-		<item>Русский</item>
-	</string-array>
-
-	<string name="pref_langDefaultValue" translatable="false">English</string>
-	<string name="pref_hcPortTitle">Edit Head Controller port</string>
-	<string name="pref_hcPortDefault" translatable="false">8080</string>
+	<string name="added">Added:</string>
+	<string name="menuDashboard">Dashboard</string>
+	<string name="back">Back</string>
+	<string name="add">Add</string>
 
 	<string name="testUserName">Artyom</string>
 	<string name="testUserSurname">Motozov</string>
-	<string name="added">Added:</string>
 </resources>

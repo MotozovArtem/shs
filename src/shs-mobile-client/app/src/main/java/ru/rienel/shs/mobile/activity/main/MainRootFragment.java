@@ -22,8 +22,12 @@ import ru.rienel.shs.mobile.activity.person.PersonActivity;
 import ru.rienel.shs.mobile.activity.settings.AppSettingsActivity;
 
 public class MainRootFragment extends Fragment implements MainContract.View {
+
 	private DrawerLayout drawerLayout;
+
 	private ActionBarDrawerToggle actionBarDrawerToggle;
+
+	private MainContract.Presenter mainPresenter;
 
 	@Nullable
 	@Override
@@ -78,6 +82,6 @@ public class MainRootFragment extends Fragment implements MainContract.View {
 
 	@Override
 	public void setPresenter(MainContract.Presenter presenter) {
-
+		this.mainPresenter = presenter;
 	}
 }
