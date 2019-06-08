@@ -52,6 +52,10 @@ public class MeterActivity extends AppCompatActivity {
 		int id = item.getItemId();
 		switch (id) {
 			case R.id.toolbarPlus:
+				// TODO: SHOW MeterAddFragment and set presenter
+				return true;
+			case android.R.id.home:
+				onBackPressed();
 				return true;
 		}
 		return super.onOptionsItemSelected(item);

@@ -95,7 +95,7 @@ public class MeterPresenter implements MeterContract.Presenter {
 	}
 
 	public void fireResponse(List<ResourceMeter> resourceMeters) {
-		MeterApiResponseEvent event = new MeterApiResponseEvent(this, resourceMeters);
+		MeterApiResponseEvent event = new MeterApiResponseEvent(this, resourceMeters, true);
 		for (EventListener listener : listeners) {
 			if (listener instanceof MeterApiResponseListener) {
 				try {
@@ -122,14 +122,20 @@ public class MeterPresenter implements MeterContract.Presenter {
 
 	public static class MeterApiResponseEvent extends EventObject {
 		private List<ResourceMeter> resourceMeters;
+		private Boolean success;
 
-		public MeterApiResponseEvent(Object source, List<ResourceMeter> resourceMeters) {
+		public MeterApiResponseEvent(Object source, List<ResourceMeter> resourceMeters, Boolean success) {
 			super(source);
 			this.resourceMeters = resourceMeters;
+			this.success = success;
 		}
 
 		public List<ResourceMeter> getResourceMeters() {
 			return resourceMeters;
+		}
+
+		public Boolean getSuccess() {
+			return success;
 		}
 	}
 

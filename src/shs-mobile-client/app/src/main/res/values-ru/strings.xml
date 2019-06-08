@@ -32,4 +32,10 @@
 	<string name="type">Тип:</string>
 	<string name="testUserName">Артем</string>
 	<string name="testUserSurname">Мотозов</string>
+	<string name="serialNumber">Серийный номер:</string>
+	<string name="added">Добавлен:</string>
+	<string name="menuDashboard">Главная</string>
+	<string name="back">Назад</string>
+	<string name="add">Добавить</string>
+	<string name="serialNumberHint">Введите серийный номер</string>
 </resources>
