@@ -56,13 +56,13 @@ public class MeterActivity extends AppCompatActivity {
 			case R.id.toolbarPlus:
 				if (meterAddFragment == null) {
 					meterAddFragment = MeterAddFragment.newInstance(resourceMeterPresenter);
-					FragmentManager fragmentManager = getSupportFragmentManager();
-					fragmentManager.beginTransaction()
-							.hide(meterRootFragment)
-							.add(R.id.resourceMeterRootFragmentContainer, meterAddFragment)
-							.addToBackStack(null)
-							.commit();
 				}
+				FragmentManager fragmentManager = getSupportFragmentManager();
+				fragmentManager.beginTransaction()
+						.hide(meterRootFragment)
+						.addToBackStack(null)
+						.add(R.id.resourceMeterRootFragmentContainer, meterAddFragment)
+						.commit();
 				return true;
 			case android.R.id.home:
 				onBackPressed();

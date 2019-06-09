@@ -53,7 +53,7 @@ public class ResourceBillApi {
 					));
 			Response response = chain.proceed(request);
 			Log.d(TAG, String.format("\n<----- HTTP %s \n Headers:\n%s \nBody:%s\n<-----",
-					response.code(), response.headers(), response.body().string()));
+					response.code(), response.headers(), response.body()));
 			return response;
 		}
 	}

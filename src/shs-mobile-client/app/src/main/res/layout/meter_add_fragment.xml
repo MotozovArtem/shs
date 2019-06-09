@@ -18,9 +18,10 @@
 	<EditText
 			android:id="@+id/resourceMeterAddSerialNumberInput"
 			android:hint="@string/serialNumberHint"
-			android:inputType="text|number"
+			android:inputType="text"
 			android:layout_width="match_parent"
-			android:layout_height="50dp"/>
+			android:layout_height="50dp"
+			tools:ignore="TextFields"/>
 
 
 	<LinearLayout
