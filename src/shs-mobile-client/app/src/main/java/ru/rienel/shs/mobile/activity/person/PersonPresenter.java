@@ -40,11 +40,6 @@ public class PersonPresenter implements PersonContract.Presenter {
 	}
 
 	@Override
-	public void start() {
-
-	}
-
-	@Override
 	public void loadData() {
 		Call<List<Person>> request = apiClient.getAllPersons();
 		request.enqueue(new Callback<List<Person>>() {

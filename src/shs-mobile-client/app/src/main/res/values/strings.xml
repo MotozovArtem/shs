@@ -33,7 +33,7 @@
 	<string name="date">Date:</string>
 	<string name="meter">Meter:</string>
 	<string name="type">Type:</string>
-	<string name="serialNumber">Serial Number:</string>
+	<string name="serialNumber">Serial number:</string>
 	<string name="added">Added:</string>
 	<string name="menuDashboard">Dashboard</string>
 	<string name="back">Back</string>
@@ -41,6 +41,7 @@
 	<string name="testUserName">Artyom</string>
 	<string name="testUserSurname">Motozov</string>
 	<string name="serialNumberHint">Enter serial number</string>
+	<string name="selectResourceType">Select resource type:</string>
 
 	<string-array name="resourceTypeArray">
 		<item>Electricity</item>

@@ -1,5 +1,6 @@
 package ru.rienel.shs.headcontroller.service.rest;
 
+import java.time.ZonedDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,20 +39,19 @@ public class ResourceMeterRestService {
 	}
 
 	@PutMapping("/")
-	public Boolean addMeters(@RequestBody ResourceMeter resourceMeter) {
-		resourceMeterRepository.save(resourceMeter);
-		return true;
+	public ResourceMeter addMeters(@RequestBody ResourceMeter resourceMeter) {
+		resourceMeter.setAddedTime(ZonedDateTime.now());
+		return resourceMeterRepository.save(resourceMeter);
 	}
 
 	@PostMapping("/{serialNumber}")
-	public Boolean updateMeter(@PathVariable("serialNumber") String serialNumber, @RequestBody ResourceMeter resourceMeter) {
+	public ResourceMeter updateMeter(@PathVariable("serialNumber") String serialNumber, @RequestBody ResourceMeter resourceMeter) {
 		ResourceMeter meterForUpdate = resourceMeterRepository.findBySerialNumber(serialNumber);
 		meterForUpdate.setType(resourceMeter.getType());
 		meterForUpdate.setNeighbors(resourceMeter.getNeighbors());
 		meterForUpdate.setAddedTime(resourceMeter.getAddedTime());
 		meterForUpdate.setVerification(resourceMeter.getVerification());
-		resourceMeterRepository.save(meterForUpdate);
-		return true;
+		return resourceMeterRepository.save(meterForUpdate);
 	}
 
 	@DeleteMapping("/{serialNumber}")

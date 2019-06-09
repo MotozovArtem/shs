@@ -21,11 +21,6 @@ public class IndicationPagerPresenter implements IndicationPagerContract.Present
 	}
 
 	@Override
-	public void start() {
-
-	}
-
-	@Override
 	public void setIndicationPagerView(IndicationPagerContract.View indicationPagerView) {
 		this.indicationPagerView = indicationPagerView;
 	}

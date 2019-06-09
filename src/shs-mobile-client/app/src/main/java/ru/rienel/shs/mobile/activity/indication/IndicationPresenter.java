@@ -46,11 +46,6 @@ public class IndicationPresenter implements IndicationContract.Presenter {
 	}
 
 	@Override
-	public void start() {
-
-	}
-
-	@Override
 	public void loadData() {
 		Call<List<IndicationRecord>> request = apiClient.getAllIndicationRecords();
 		request.enqueue(new Callback<List<IndicationRecord>>() {

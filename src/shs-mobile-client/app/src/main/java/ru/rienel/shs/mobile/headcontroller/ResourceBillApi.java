@@ -48,12 +48,12 @@ public class ResourceBillApi {
 					.addHeader("Authorization", authorizationToken)
 					.build();
 			Log.d(TAG,
-					String.format("-----> HTTP %s %s\nHeaders:\n%s \nBody:%s\n------>",
+					String.format("\n-----> HTTP %s %s\nHeaders:\n%s \nBody:%s\n------>",
 							request.method(), request.url(), request.headers(), request.body()
 					));
 			Response response = chain.proceed(request);
-			Log.d(TAG, String.format("<----- HTTP %s \n Headers:\n%s \nBody:%s\n<-----",
-					response.code(), response.headers(), response.body()));
+			Log.d(TAG, String.format("\n<----- HTTP %s \n Headers:\n%s \nBody:%s\n<-----",
+					response.code(), response.headers(), response.body().string()));
 			return response;
 		}
 	}

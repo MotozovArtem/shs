@@ -17,6 +17,8 @@ public class MeterActivity extends AppCompatActivity {
 
 	private MeterRootFragment meterRootFragment;
 
+	private MeterAddFragment meterAddFragment;
+
 	private MeterContract.Presenter resourceMeterPresenter;
 
 	@Override
@@ -52,7 +54,15 @@ public class MeterActivity extends AppCompatActivity {
 		int id = item.getItemId();
 		switch (id) {
 			case R.id.toolbarPlus:
-				// TODO: SHOW MeterAddFragment and set presenter
+				if (meterAddFragment == null) {
+					meterAddFragment = MeterAddFragment.newInstance(resourceMeterPresenter);
+					FragmentManager fragmentManager = getSupportFragmentManager();
+					fragmentManager.beginTransaction()
+							.hide(meterRootFragment)
+							.add(R.id.resourceMeterRootFragmentContainer, meterAddFragment)
+							.addToBackStack(null)
+							.commit();
+				}
 				return true;
 			case android.R.id.home:
 				onBackPressed();

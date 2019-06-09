@@ -9,6 +9,9 @@ public class ZonedDateTimeConverter implements AttributeConverter<ZonedDateTime,
 
 	@Override
 	public Long convertToDatabaseColumn(ZonedDateTime zonedDateTime) {
+		if (zonedDateTime == null) {
+			return 0L;
+		}
 		return zonedDateTime.toInstant().toEpochMilli();
 	}
 

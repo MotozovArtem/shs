@@ -1,6 +1,7 @@
 package ru.rienel.shs.mobile.activity.meter;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.EventObject;
 import java.util.List;
@@ -20,6 +21,7 @@ import ru.rienel.shs.mobile.R;
 import ru.rienel.shs.mobile.config.AppConfig;
 import ru.rienel.shs.mobile.db.DatabaseHelper;
 import ru.rienel.shs.mobile.domain.ResourceMeter;
+import ru.rienel.shs.mobile.domain.ResourceType;
 import ru.rienel.shs.mobile.headcontroller.ResourceMeterApi;
 import ru.rienel.shs.mobile.headcontroller.ResourceMeterApiClient;
 
@@ -79,6 +81,38 @@ public class MeterPresenter implements MeterContract.Presenter {
 		});
 	}
 
+	@Override
+	public void addResourceMeter(String serialNumber, ResourceType resourceType) {
+		ResourceMeter resourceMeterForAdd = new ResourceMeter();
+		resourceMeterForAdd.setType(resourceType);
+		resourceMeterForAdd.setSerialNumber(serialNumber);
+		Call<ResourceMeter> request = apiClient.addResourceMeter(resourceMeterForAdd);
+		request.enqueue(new Callback<ResourceMeter>() {
+			@Override
+			@EverythingIsNonNull
+			public void onResponse(Call<ResourceMeter> call, Response<ResourceMeter> response) {
+				if (!response.isSuccessful()) {
+					resourceMeterView.makeShortToastWithText("CODE: " + response.code());
+				} else {
+					ResourceMeter result = response.body();
+					if (result != null) {
+						List<ResourceMeter> resourceMeters = new ArrayList<>(1);
+						resourceMeters.add(result);
+						fireResponse(resourceMeters);
+						saveResponse(resourceMeters);
+					}
+				}
+			}
+
+			@Override
+			@EverythingIsNonNull
+			public void onFailure(Call<ResourceMeter> call, Throwable e) {
+				Log.e(TAG, "Exception while requesting", e);
+				resourceMeterView.makeShortToast(R.string.hcNotAvailable);
+			}
+		});
+	}
+
 	private void saveResponse(List<ResourceMeter> resourceMeterList) {
 		for (ResourceMeter resourceMeter : resourceMeterList) {
 			try {
@@ -89,10 +123,9 @@ public class MeterPresenter implements MeterContract.Presenter {
 		}
 	}
 
-	@Override
-	public void start() {
-
-	}
+	////////////
+	// events //
+	////////////
 
 	public void fireResponse(List<ResourceMeter> resourceMeters) {
 		MeterApiResponseEvent event = new MeterApiResponseEvent(this, resourceMeters, true);
@@ -104,7 +137,6 @@ public class MeterPresenter implements MeterContract.Presenter {
 					Log.e(TAG, "Listener error: ", e);
 				}
 			}
-
 		}
 	}
 

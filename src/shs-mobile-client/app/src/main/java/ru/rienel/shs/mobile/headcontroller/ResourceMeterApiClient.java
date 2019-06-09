@@ -22,10 +22,10 @@ public interface ResourceMeterApiClient {
 	Call<ResourceMeter> getResourceMeterBySerialNumber(@Path("serialNumber") String serialNumber);
 
 	@PUT(BASE_URL + "/")
-	Call<Boolean> addResourceMeter(@Body ResourceMeter resourceMeter);
+	Call<ResourceMeter> addResourceMeter(@Body ResourceMeter resourceMeter);
 
 	@POST(BASE_URL + "/{serialNumber}")
-	Call<Boolean> updateResourceMeter(@Path("serialNumber") String serialNumber, @Body ResourceMeter resourceMeter);
+	Call<ResourceMeter> updateResourceMeter(@Path("serialNumber") String serialNumber, @Body ResourceMeter resourceMeter);
 
 	@DELETE(BASE_URL + "/{serialNumber}")
 	Call<Boolean> deleteResourceMeterBySerialNumber(@Path("serialNumber") String serialNumber);

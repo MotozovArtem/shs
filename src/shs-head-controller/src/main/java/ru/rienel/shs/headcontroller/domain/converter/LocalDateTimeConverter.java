@@ -9,6 +9,9 @@ public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime,
 
 	@Override
 	public Long convertToDatabaseColumn(LocalDateTime localDateTime) {
+		if (localDateTime == null) {
+			return 0L;
+		}
 		return localDateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
 	}
 
