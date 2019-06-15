@@ -54,7 +54,7 @@ void loop()
             EthernetClient ethClient;
             HttpClient httpClient(ethClient, headControllerUrl, port);
             String contentType = "application/json";
-            httpClient.post("/api/v1/record/add", contentType, record.result);
+            httpClient.post("/api/v1/record/", contentType, record.result);
             int statusCode = httpClient.responseStatusCode();
             String response = httpClient.responseBody();
             Serial.print("Status code: ");

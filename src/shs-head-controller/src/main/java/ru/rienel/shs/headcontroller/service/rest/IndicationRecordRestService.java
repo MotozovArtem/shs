@@ -39,7 +39,7 @@ public class IndicationRecordRestService {
 	@Autowired
 	private Converter<IndicationRecord, IndicationRecordDto> converter;
 
-	@PostMapping("/add")
+	@PostMapping("/")
 	public ResponseEntity receiveRecord(@RequestBody IndicationRecordDto recordDto) {
 		ResourceMeter meter = resourceMeterRepository.findBySerialNumber(recordDto.getSerialNumber());
 		if (meter == null) {
