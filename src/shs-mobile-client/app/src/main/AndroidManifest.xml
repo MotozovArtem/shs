@@ -41,7 +41,7 @@
 				android:label="@string/persons">
 		</activity>
 		<activity
-				android:name=".activity.bill.BillActivity"
+				android:name=".activity.bill.ResourceBillActivity"
 				android:label="@string/bills">
 		</activity>
 		<activity

@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ru.rienel.shs.mobile.R;
-import ru.rienel.shs.mobile.activity.bill.BillActivity;
+import ru.rienel.shs.mobile.activity.bill.ResourceBillActivity;
 import ru.rienel.shs.mobile.activity.indication.IndicationActivity;
 import ru.rienel.shs.mobile.activity.meter.MeterActivity;
 import ru.rienel.shs.mobile.activity.person.PersonActivity;
@@ -28,6 +28,11 @@ public class MainRootFragment extends Fragment implements MainContract.View {
 	private ActionBarDrawerToggle actionBarDrawerToggle;
 
 	private MainContract.Presenter mainPresenter;
+
+	public static MainRootFragment getInstance() {
+		MainRootFragment fragment = new MainRootFragment();
+		return fragment;
+	}
 
 	@Nullable
 	@Override
@@ -51,7 +56,7 @@ public class MainRootFragment extends Fragment implements MainContract.View {
 					startActivity(prepareChangeActivityIntent(PersonActivity.class));
 					break;
 				case R.id.menu_bill:
-					startActivity(prepareChangeActivityIntent(BillActivity.class));
+					startActivity(prepareChangeActivityIntent(ResourceBillActivity.class));
 					break;
 				case R.id.menu_indications:
 					startActivity(prepareChangeActivityIntent(IndicationActivity.class));

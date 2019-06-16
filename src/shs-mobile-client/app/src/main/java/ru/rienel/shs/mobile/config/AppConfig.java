@@ -6,4 +6,5 @@ public class AppConfig {
 
 	public static final int HEAD_CONTROLLER_PORT = 8080;
 
+	public static final String AUTHORIZATION_TOKEN = "aaa";
 }

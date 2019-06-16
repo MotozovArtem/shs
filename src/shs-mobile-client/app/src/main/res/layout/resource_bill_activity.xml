@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/billRootFragmentContainer"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		tools:context=".activity.bill.BillActivity">
+		tools:context=".activity.bill.ResourceBillActivity">
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
