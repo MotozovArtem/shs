@@ -7,7 +7,7 @@ import ru.rienel.shs.mobile.util.HaveListeners;
 import ru.rienel.shs.mobile.util.Toastable;
 
 public interface MeterContract {
- 	interface View extends BaseView<Presenter>, Toastable {
+	interface View extends BaseView<Presenter>, Toastable {
 		void setRefreshing(boolean refreshing);
 	}
 

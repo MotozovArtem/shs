@@ -8,13 +8,13 @@
 			android:key="pref_hc_port"
 			android:title="@string/pref_hcPortTitle"
 			android:defaultValue="@string/pref_hcPortDefault"/>
-	<ListPreference
-			android:key="pref_lang"
-			android:title="@string/language"
-			android:summary="@string/pref_langSummary"
-			android:entries="@array/pref_langEntries"
-			android:entryValues="@array/pref_langValues"
-			android:defaultValue="@string/pref_langDefaultValue"/>
+<!--	<ListPreference-->
+<!--			android:key="pref_lang"-->
+<!--			android:title="@string/language"-->
+<!--			android:summary="@string/pref_langSummary"-->
+<!--			android:entries="@array/pref_langEntries"-->
+<!--			android:entryValues="@array/pref_langValues"-->
+<!--			android:defaultValue="@string/pref_langDefaultValue"/>-->
 	<Preference
 			android:key="pref_bug_report"
 			android:title="@string/pref_bugReportTitle"

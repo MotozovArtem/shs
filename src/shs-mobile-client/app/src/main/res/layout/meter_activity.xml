@@ -10,6 +10,6 @@
 
 	<include
 			android:id="@+id/resourceMeterToolBar"
-			layout="@layout/tool_bar_plus"/>
+			layout="@layout/tool_bar"/>
 
 </LinearLayout>

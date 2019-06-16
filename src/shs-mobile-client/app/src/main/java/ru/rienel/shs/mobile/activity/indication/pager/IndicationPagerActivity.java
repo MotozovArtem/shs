@@ -8,11 +8,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.widget.TextView;
 
 import com.j256.ormlite.dao.Dao;
 
@@ -21,11 +24,13 @@ import ru.rienel.shs.mobile.db.DatabaseHelper;
 import ru.rienel.shs.mobile.domain.IndicationRecord;
 import ru.rienel.shs.mobile.util.Constants;
 
-public class IndicationPagerActivity extends FragmentActivity {
+public class IndicationPagerActivity extends AppCompatActivity {
 
 	private static final String TAG = IndicationPagerActivity.class.getName();
 
 	private ViewPager indicationPager;
+
+	private Toolbar toolbar;
 
 	private List<IndicationRecord> indicationRecords;
 
@@ -44,6 +49,9 @@ public class IndicationPagerActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.indication_pager_activity);
 		indicationPager = findViewById(R.id.indicationViewPager);
+		toolbar = findViewById(R.id.indicationItemToolbar);
+		toolbar.setNavigationIcon(R.drawable.ic_back);
+		setSupportActionBar(toolbar);
 		DatabaseHelper dbHelper = new DatabaseHelper(this);
 		try {
 			indicationRecordRepository = dbHelper.getIndicationRecordDao();
@@ -89,5 +97,17 @@ public class IndicationPagerActivity extends FragmentActivity {
 				return indicationRecords.size();
 			}
 		};
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onSupportNavigateUp() {
+		onBackPressed();
+		return true;
 	}
 }
