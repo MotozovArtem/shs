@@ -29,11 +29,8 @@ public class PersonPresenter implements PersonContract.Presenter {
 
 	private PersonApiClient apiClient;
 
-	private SharedPreferences sharedPreferences;
-
 	public PersonPresenter(PersonContract.View personRootView, SharedPreferences sharedPreferences) {
 		this.personRootView = personRootView;
-		this.sharedPreferences = sharedPreferences;
 		String url = sharedPreferences.getString("pref_hc_address", AppConfig.HEAD_CONTROLLER_URL);
 		String port = sharedPreferences.getString("pref_hc_port", Integer.toString(AppConfig.HEAD_CONTROLLER_PORT));
 		apiClient = PersonApi.newClient("http://" + url + ":" + port, "aaa");

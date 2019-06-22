@@ -35,7 +35,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 	private Dao<IndicationRecord, Long> indicationRecordDao;
 
-
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
 	}

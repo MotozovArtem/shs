@@ -17,7 +17,9 @@ import ru.rienel.shs.mobile.R;
 public class PersonRootFragment extends Fragment implements PersonContract.View, SwipeRefreshLayout.OnRefreshListener {
 
 	private SwipeRefreshLayout swipeRefreshLayout;
+
 	private PersonListFragment personListFragment;
+
 	private PersonContract.Presenter personPresenter;
 
 	@Nullable
