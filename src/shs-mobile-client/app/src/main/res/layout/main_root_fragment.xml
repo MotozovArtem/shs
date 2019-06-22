@@ -7,19 +7,6 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-	<android.support.design.widget.NavigationView
-			android:id="@+id/navigation_menu"
-			app:headerLayout="@layout/menu_header"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:background="@color/white"
-			app:itemTextColor="@color/darkgray"
-			app:itemIconTint="@color/darkgray"
-			app:menu="@menu/drawermenu"
-			android:layout_gravity="start">
-
-	</android.support.design.widget.NavigationView>
-
 	<android.support.v4.widget.SwipeRefreshLayout
 			android:id="@+id/mainSwipeRefreshLayout"
 			android:layout_width="match_parent"
@@ -82,4 +69,17 @@
 					android:layout_height="wrap_content"/>
 		</RelativeLayout>
 	</android.support.v4.widget.SwipeRefreshLayout>
+
+	<android.support.design.widget.NavigationView
+			android:id="@+id/navigation_menu"
+			app:headerLayout="@layout/menu_header"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@color/white"
+			app:itemTextColor="@color/darkgray"
+			app:itemIconTint="@color/darkgray"
+			app:menu="@menu/drawermenu"
+			android:layout_gravity="start">
+
+	</android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
