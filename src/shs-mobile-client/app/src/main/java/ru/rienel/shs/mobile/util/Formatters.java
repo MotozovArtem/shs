@@ -35,4 +35,12 @@ public final class Formatters {
 	public static String formatDouble(Double number, int scale) {
 		return String.format(Locale.getDefault(), "%." + scale + "f", number);
 	}
+
+	public static String formatLong(Long number) {
+		return String.format(Locale.getDefault(), "%d", number);
+	}
+
+	public static String formatInt(Integer number) {
+		return String.format(Locale.getDefault(), "%d", number);
+	}
 }

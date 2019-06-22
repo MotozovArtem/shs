@@ -7,7 +7,6 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-
 	<android.support.design.widget.NavigationView
 			android:id="@+id/navigation_menu"
 			app:headerLayout="@layout/menu_header"
@@ -25,18 +24,62 @@
 			android:id="@+id/mainSwipeRefreshLayout"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
+		<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+			<TextView
+					android:id="@+id/mainPersonCountLabel"
+					android:text="@string/personsCountLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
 
-		<TextView
-				android:id="@+id/mainPersonSummaryLabel"
-				android:text="@string/personsSummaryLabel"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"/>
+			<TextView
+					android:id="@+id/mainPersonCount"
+					android:layout_toEndOf="@id/mainPersonCountLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
 
-		<TextView
-				android:id="@+id/mainPersonSummary"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"/>
+			<TextView
+					android:id="@+id/mainIndicationCountLabel"
+					android:text="@string/indicationsCountLabel"
+					android:layout_below="@+id/mainPersonCountLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
 
+			<TextView
+					android:id="@+id/mainIndicationCount"
+					android:layout_below="@id/mainPersonCount"
+					android:layout_toEndOf="@id/mainIndicationCountLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
+
+			<TextView
+					android:id="@+id/mainResourceBillCountLabel"
+					android:text="@string/billsCountLabel"
+					android:layout_below="@id/mainIndicationCountLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
+
+			<TextView
+					android:id="@+id/mainResourceBillCount"
+					android:layout_below="@id/mainIndicationCount"
+					android:layout_toEndOf="@id/mainResourceBillCountLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
+
+			<TextView
+					android:id="@+id/mainResourceMeterCountLabel"
+					android:text="@string/metersCountLabel"
+					android:layout_below="@id/mainResourceBillCountLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
+
+			<TextView
+					android:id="@+id/mainResourceMeterCount"
+					android:layout_below="@id/mainResourceBillCount"
+					android:layout_toEndOf="@id/mainResourceMeterCountLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
+		</RelativeLayout>
 	</android.support.v4.widget.SwipeRefreshLayout>
-
 </android.support.v4.widget.DrawerLayout>

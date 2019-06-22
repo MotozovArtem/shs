@@ -42,7 +42,10 @@
 	<string name="testUserSurname">Motozov</string>
 	<string name="serialNumberHint">Enter serial number</string>
 	<string name="selectResourceType">Select resource type:</string>
-	<string name="personsSummaryLabel">Persons:</string>
+	<string name="personsCountLabel">Persons:</string>
+	<string name="indicationsCountLabel">Indications:</string>
+	<string name="metersCountLabel">Meters:</string>
+	<string name="billsCountLabel">Bills:</string>
 
 	<string-array name="resourceTypeArray">
 		<item>Electricity</item>

@@ -20,8 +20,11 @@ import ru.rienel.shs.mobile.domain.Person;
 public class PersonListFragment extends Fragment {
 
 	private RecyclerView personRecyclerView;
+
 	private PersonAdapter personAdapter;
+
 	private PersonContract.Presenter personPresenter;
+
 	private List<Person> personList = new ArrayList<>();
 
 	public static PersonListFragment getInstance(PersonContract.Presenter personPresenter) {

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ru.rienel.shs.mobile.R;
@@ -22,6 +23,8 @@ import ru.rienel.shs.mobile.activity.indication.IndicationActivity;
 import ru.rienel.shs.mobile.activity.meter.MeterActivity;
 import ru.rienel.shs.mobile.activity.person.PersonActivity;
 import ru.rienel.shs.mobile.activity.settings.AppSettingsActivity;
+import ru.rienel.shs.mobile.domain.Common;
+import ru.rienel.shs.mobile.util.Formatters;
 
 public class MainRootFragment extends Fragment implements MainContract.View, SwipeRefreshLayout.OnRefreshListener {
 
@@ -32,6 +35,14 @@ public class MainRootFragment extends Fragment implements MainContract.View, Swi
 	private MainContract.Presenter mainPresenter;
 
 	private SwipeRefreshLayout swipeRefreshLayout;
+
+	private TextView personCount;
+
+	private TextView indicationCount;
+
+	private TextView resourceBillCount;
+
+	private TextView resourceMeterCount;
 
 	public static MainRootFragment getInstance() {
 		MainRootFragment fragment = new MainRootFragment();
@@ -65,6 +76,11 @@ public class MainRootFragment extends Fragment implements MainContract.View, Swi
 
 		setHasOptionsMenu(true);
 		((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		personCount = view.findViewById(R.id.mainPersonCount);
+		indicationCount = view.findViewById(R.id.mainIndicationCount);
+		resourceBillCount = view.findViewById(R.id.mainResourceBillCount);
+		resourceMeterCount = view.findViewById(R.id.mainResourceMeterCount);
 		return view;
 	}
 
@@ -107,6 +123,7 @@ public class MainRootFragment extends Fragment implements MainContract.View, Swi
 	@Override
 	public void setPresenter(MainContract.Presenter presenter) {
 		this.mainPresenter = presenter;
+		mainPresenter.addListener(new ResponseListener());
 	}
 
 	@Override
@@ -132,5 +149,30 @@ public class MainRootFragment extends Fragment implements MainContract.View, Swi
 	@Override
 	public void setRefreshing(boolean refreshing) {
 		swipeRefreshLayout.setRefreshing(refreshing);
+	}
+
+	public void updateUi(Common common) {
+		if (common.getPersonCount() != null) {
+			personCount.setText(Formatters.formatLong(common.getPersonCount()));
+		}
+		if (common.getBillsCount() != null) {
+			resourceBillCount.setText(Formatters.formatLong(common.getBillsCount()));
+		}
+		if (common.getIndicationsCount() != null) {
+			indicationCount.setText(Formatters.formatLong(common.getIndicationsCount()));
+		}
+		if (common.getMetersCount() != null) {
+			resourceMeterCount.setText(Formatters.formatLong(common.getMetersCount()));
+		}
+	}
+
+	class ResponseListener implements MainPresenter.CommonApiResponseListener {
+
+		@Override
+		public void response(MainPresenter.CommonApiResponseEvent event) {
+			Common common = event.getCommon();
+
+			updateUi(common);
+		}
 	}
 }
