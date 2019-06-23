@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import ru.rienel.shs.headcontroller.repository.CustomUserRepository;
 import ru.rienel.shs.headcontroller.domain.CustomUser;
+import ru.rienel.shs.headcontroller.repository.CustomUserRepository;
 
 @Service("CustomUserDetailService")
 public class CustomUserDetailService implements UserDetailsService {

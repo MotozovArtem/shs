@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS 'ResourceMeter'
 	'serial_number' VARCHAR(32),
 	'type'          VARCHAR(100),
 	'verification'  TEXT,
-	'added_time'     INTEGER
+	'added_time'    INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS 'ResourceMeterNeighbors'
