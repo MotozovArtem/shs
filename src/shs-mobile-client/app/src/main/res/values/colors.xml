@@ -11,4 +11,6 @@
 	<color name="hot_water_color">#E53935</color>
 	<color name="cold_water_color">#039BE5</color>
 	<color name="gas_color">#9CCC65</color>
+
+	<color name="labelColor">#3949AB</color>
 </resources>

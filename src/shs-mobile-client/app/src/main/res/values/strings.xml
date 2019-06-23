@@ -46,6 +46,8 @@
 	<string name="indicationsCountLabel">Indications:</string>
 	<string name="metersCountLabel">Meters:</string>
 	<string name="billsCountLabel">Bills:</string>
+	<string name="costPerUnit">Price/Unit:</string>
+	<string name="summary">Summary:</string>
 
 	<string-array name="resourceTypeArray">
 		<item>Electricity</item>

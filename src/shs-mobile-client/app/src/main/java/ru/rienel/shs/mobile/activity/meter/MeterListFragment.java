@@ -1,11 +1,13 @@
 package ru.rienel.shs.mobile.activity.meter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,11 +25,11 @@ public class MeterListFragment extends Fragment {
 
 	private MeterContract.Presenter resourceMeterPresenter;
 
-	private RecyclerView resourceMeterRecycleView;
+	private RecyclerView resourceMeterRecyclerView;
 
 	private MeterAdapter resourceMeterAdapter;
 
-	private List<ResourceMeter> resourceMeters;
+	private List<ResourceMeter> resourceMeterList = new ArrayList<>();
 
 	public static MeterListFragment getInstance(MeterContract.Presenter resourceMeterPresenter) {
 		MeterListFragment fragment = new MeterListFragment();
@@ -39,21 +41,26 @@ public class MeterListFragment extends Fragment {
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.meter_list_fragment, container, false);
-		resourceMeterRecycleView = view.findViewById(R.id.resourceMeterRecyclerView);
-		resourceMeterRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+		resourceMeterRecyclerView = view.findViewById(R.id.resourceMeterRecyclerView);
+		LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+		DividerItemDecoration itemDecoration = new DividerItemDecoration(
+				resourceMeterRecyclerView.getContext(),
+				layoutManager.getOrientation());
+		resourceMeterRecyclerView.setLayoutManager(layoutManager);
+		resourceMeterRecyclerView.addItemDecoration(itemDecoration);
 
 		updateUi();
 		return view;
 	}
 
 	public void updateUi() {
-		resourceMeterAdapter = new MeterAdapter(resourceMeters);
-		resourceMeterRecycleView.setAdapter(resourceMeterAdapter);
+		resourceMeterAdapter = new MeterAdapter(resourceMeterList);
+		resourceMeterRecyclerView.setAdapter(resourceMeterAdapter);
 	}
 
 	public void updateUi(List<ResourceMeter> resourceMeters) {
 		resourceMeterAdapter = new MeterAdapter(resourceMeters);
-		resourceMeterRecycleView.setAdapter(resourceMeterAdapter);
+		resourceMeterRecyclerView.setAdapter(resourceMeterAdapter);
 	}
 
 	public void setPresenter(MeterContract.Presenter presenter) {

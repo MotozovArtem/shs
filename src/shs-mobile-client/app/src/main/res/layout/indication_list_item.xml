@@ -18,7 +18,7 @@
 			android:layout_height="wrap_content"/>
 
 	<TextView
-			android:id="@+id/indication_list_item_meter"
+			android:id="@+id/indicationListItemMeter"
 			android:layout_toEndOf="@id/indicationListItemMeterLabel"
 			android:layout_below="@id/indicationListItemValue"
 			android:text="@string/testText"

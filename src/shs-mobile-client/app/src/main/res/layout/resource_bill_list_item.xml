@@ -1,7 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_marginBottom="5dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+
+	<TextView
+			android:id="@+id/resourceBillListItemSerialNumberLabel"
+			style="@style/resourceBillListItemSerialNumberLabel"
+			android:text="@string/serialNumber"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<TextView
+			android:id="@+id/resourceBillListItemSerialNumber"
+			android:layout_toEndOf="@id/resourceBillListItemSerialNumberLabel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<TextView
+			android:id="@+id/resourceBillListItemCostPerUnitLabel"
+			android:layout_below="@id/resourceBillListItemSerialNumberLabel"
+			android:text="@string/costPerUnit"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<TextView
+			android:id="@+id/resourceBillListItemCostPerUnit"
+			android:layout_toEndOf="@id/resourceBillListItemSummaryLabel"
+			android:layout_below="@id/resourceBillListItemSerialNumber"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<TextView
+			android:id="@+id/resourceBillListItemSummaryLabel"
+			android:layout_below="@id/resourceBillListItemCostPerUnitLabel"
+			android:text="@string/summary"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<TextView
+			android:id="@+id/resourceBillListItemSummary"
+			android:layout_toEndOf="@id/resourceBillListItemCostPerUnitLabel"
+			android:layout_below="@id/resourceBillListItemCostPerUnit"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
 
 </RelativeLayout>

@@ -46,7 +46,6 @@ public class ResourceBillRootFragment extends Fragment implements ResourceBillCo
 
 		setHasOptionsMenu(true);
 
-
 		((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
 		((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

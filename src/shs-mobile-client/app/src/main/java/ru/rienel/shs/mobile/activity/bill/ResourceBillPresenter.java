@@ -75,9 +75,9 @@ public class ResourceBillPresenter implements ResourceBillContract.Presenter {
 	}
 
 	private void saveResponse(List<ResourceBill> result) {
-		Dao<ResourceBill, Long> resourceBillRespository = null;
+		Dao<ResourceBill, Long> resourceBillRepository = null;
 		try {
-			resourceBillRespository = dbHelper.getResourceBillDao();
+			resourceBillRepository = dbHelper.getResourceBillDao();
 		} catch (SQLException e) {
 			Log.e(TAG, "Cannot instantiate repository", e);
 			return;
@@ -85,7 +85,7 @@ public class ResourceBillPresenter implements ResourceBillContract.Presenter {
 
 		for (ResourceBill resourceBill : result) {
 			try {
-				resourceBillRespository.createOrUpdate(resourceBill);
+				resourceBillRepository.createOrUpdate(resourceBill);
 			} catch (SQLException e) {
 				Log.e(TAG, "Cannot save indication record", e);
 			}
